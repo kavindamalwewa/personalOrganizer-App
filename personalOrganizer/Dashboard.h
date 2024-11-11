@@ -90,6 +90,7 @@ namespace personalOrganizer {
 			this->llincome->TabIndex = 1;
 			this->llincome->TabStop = true;
 			this->llincome->Text = L"Income";
+			this->llincome->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &Dashboard::llincome_LinkClicked);
 			// 
 			// llexpenses
 			// 
@@ -160,5 +161,8 @@ namespace personalOrganizer {
 #pragma endregion
 	private: System::Void linkLabel4_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
 	}
+private: System::Void llincome_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
+
+}
 };
 }
