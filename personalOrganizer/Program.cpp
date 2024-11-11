@@ -1,6 +1,7 @@
 #include"LoginForm.h"
 #include"RegisterForm.h"
 #include"Dashboard.h"
+#include"Income.h"
 
 using namespace System;
 using namespace System::Windows::Forms;
@@ -37,6 +38,12 @@ void main(array<String^>^ args)
 	if (user != nullptr) {
 		MessageBox::Show("Successfull Authentification of " + user->name, "LoginForm.cpp", MessageBoxButtons::OK);
 		personalOrganizer::Dashboard dashboard;
-		Application::Run(% dashboard);
+		dashboard.ShowDialog();
+
+		if (dashboard.switchToIncome) {
+			personalOrganizer::Income income;
+			income.ShowDialog();
+		}
+
 	}
 }
