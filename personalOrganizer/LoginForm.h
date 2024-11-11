@@ -1,7 +1,7 @@
 #pragma once
 #include "User.h"
 
-namespace userAccountSystem {
+namespace personalOrganizer {
 
 	using namespace System;
 	using namespace System::ComponentModel;
