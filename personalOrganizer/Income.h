@@ -34,21 +34,27 @@ namespace personalOrganizer {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::DateTimePicker^ dateTimePicker1;
+	private: System::Windows::Forms::DateTimePicker^ dtpdate;
+	protected:
+
+	private: System::Windows::Forms::ComboBox^ cbincomesource;
+	private: System::Windows::Forms::TextBox^ tbdescription;
 
 
-	private: System::Windows::Forms::ComboBox^ comboBox1;
 
 
-	private: System::Windows::Forms::TextBox^ textBox1;
 
-	private: System::Windows::Forms::TextBox^ textBox2;
+
+	private: System::Windows::Forms::TextBox^ tbamount;
+
+
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label5;
-	private: System::Windows::Forms::TextBox^ textBox3;
+	private: System::Windows::Forms::TextBox^ tbincome;
+
 	private: System::Windows::Forms::Button^ btnaddincome;
 	private: System::Windows::Forms::Button^ btnexit;
 
@@ -70,56 +76,56 @@ namespace personalOrganizer {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->dateTimePicker1 = (gcnew System::Windows::Forms::DateTimePicker());
-			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->dtpdate = (gcnew System::Windows::Forms::DateTimePicker());
+			this->cbincomesource = (gcnew System::Windows::Forms::ComboBox());
+			this->tbdescription = (gcnew System::Windows::Forms::TextBox());
+			this->tbamount = (gcnew System::Windows::Forms::TextBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
-			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
+			this->tbincome = (gcnew System::Windows::Forms::TextBox());
 			this->btnaddincome = (gcnew System::Windows::Forms::Button());
 			this->btnexit = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
-			// dateTimePicker1
+			// dtpdate
 			// 
-			this->dateTimePicker1->CalendarFont = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold,
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->dateTimePicker1->Location = System::Drawing::Point(99, 96);
-			this->dateTimePicker1->Name = L"dateTimePicker1";
-			this->dateTimePicker1->Size = System::Drawing::Size(255, 22);
-			this->dateTimePicker1->TabIndex = 0;
-			this->dateTimePicker1->ValueChanged += gcnew System::EventHandler(this, &Income::dateTimePicker1_ValueChanged);
+			this->dtpdate->CalendarFont = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->dtpdate->Location = System::Drawing::Point(99, 96);
+			this->dtpdate->Name = L"dtpdate";
+			this->dtpdate->Size = System::Drawing::Size(255, 22);
+			this->dtpdate->TabIndex = 0;
+			this->dtpdate->ValueChanged += gcnew System::EventHandler(this, &Income::dateTimePicker1_ValueChanged);
 			// 
-			// comboBox1
+			// cbincomesource
 			// 
-			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(4) {
+			this->cbincomesource->FormattingEnabled = true;
+			this->cbincomesource->Items->AddRange(gcnew cli::array< System::Object^  >(4) {
 				L"Job", L"Allowance from parents", L"Scholarships",
 					L"Student Aid"
 			});
-			this->comboBox1->Location = System::Drawing::Point(164, 42);
-			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(190, 24);
-			this->comboBox1->TabIndex = 2;
+			this->cbincomesource->Location = System::Drawing::Point(164, 42);
+			this->cbincomesource->Name = L"cbincomesource";
+			this->cbincomesource->Size = System::Drawing::Size(190, 24);
+			this->cbincomesource->TabIndex = 2;
 			// 
-			// textBox1
+			// tbdescription
 			// 
-			this->textBox1->Location = System::Drawing::Point(136, 139);
-			this->textBox1->Multiline = true;
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(548, 91);
-			this->textBox1->TabIndex = 4;
+			this->tbdescription->Location = System::Drawing::Point(136, 139);
+			this->tbdescription->Multiline = true;
+			this->tbdescription->Name = L"tbdescription";
+			this->tbdescription->Size = System::Drawing::Size(548, 91);
+			this->tbdescription->TabIndex = 4;
 			// 
-			// textBox2
+			// tbamount
 			// 
-			this->textBox2->Location = System::Drawing::Point(534, 94);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(229, 22);
-			this->textBox2->TabIndex = 5;
+			this->tbamount->Location = System::Drawing::Point(534, 94);
+			this->tbamount->Name = L"tbamount";
+			this->tbamount->Size = System::Drawing::Size(229, 22);
+			this->tbamount->TabIndex = 5;
 			// 
 			// label2
 			// 
@@ -178,12 +184,12 @@ namespace personalOrganizer {
 			this->label5->TabIndex = 6;
 			this->label5->Text = L"Income Name:";
 			// 
-			// textBox3
+			// tbincome
 			// 
-			this->textBox3->Location = System::Drawing::Point(534, 42);
-			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(229, 22);
-			this->textBox3->TabIndex = 5;
+			this->tbincome->Location = System::Drawing::Point(534, 42);
+			this->tbincome->Name = L"tbincome";
+			this->tbincome->Size = System::Drawing::Size(229, 22);
+			this->tbincome->TabIndex = 5;
 			// 
 			// btnaddincome
 			// 
@@ -195,6 +201,7 @@ namespace personalOrganizer {
 			this->btnaddincome->TabIndex = 7;
 			this->btnaddincome->Text = L"Add Income";
 			this->btnaddincome->UseVisualStyleBackColor = true;
+			this->btnaddincome->Click += gcnew System::EventHandler(this, &Income::btnaddincome_Click);
 			// 
 			// btnexit
 			// 
@@ -220,11 +227,11 @@ namespace personalOrganizer {
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->label2);
-			this->Controls->Add(this->textBox3);
-			this->Controls->Add(this->textBox2);
-			this->Controls->Add(this->textBox1);
-			this->Controls->Add(this->comboBox1);
-			this->Controls->Add(this->dateTimePicker1);
+			this->Controls->Add(this->tbincome);
+			this->Controls->Add(this->tbamount);
+			this->Controls->Add(this->tbdescription);
+			this->Controls->Add(this->cbincomesource);
+			this->Controls->Add(this->dtpdate);
 			this->Name = L"Income";
 			this->Text = L"Income";
 			this->Load += gcnew System::EventHandler(this, &Income::Income_Load);
@@ -243,6 +250,9 @@ private: System::Void dateTimePicker1_ValueChanged(System::Object^ sender, Syste
 }
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Close();
+}
+private: System::Void btnaddincome_Click(System::Object^ sender, System::EventArgs^ e) {
+
 }
 };
 }
