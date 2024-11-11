@@ -1,6 +1,7 @@
 #pragma once
 #include"User.h"
 #include"Income.h"
+#include"ExpensesForm.h"
 
 namespace personalOrganizer {
 
@@ -141,6 +142,7 @@ namespace personalOrganizer {
 			this->llexpenses->TabIndex = 1;
 			this->llexpenses->TabStop = true;
 			this->llexpenses->Text = L"Expenses";
+			this->llexpenses->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &Dashboard::llexpenses_LinkClicked);
 			// 
 			// llincome
 			// 
@@ -198,6 +200,10 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 }
 private: System::Void btnexit_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Close();
+}
+private: System::Void llexpenses_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
+	ExpensesForm^ expensesform = gcnew ExpensesForm();
+	expensesform->ShowDialog();
 }
 };
 }
