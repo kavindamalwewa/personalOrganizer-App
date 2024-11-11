@@ -46,6 +46,7 @@ namespace personalOrganizer {
 	private: System::Windows::Forms::LinkLabel^ llbudget;
 	private: System::Windows::Forms::LinkLabel^ llexpenses;
 	private: System::Windows::Forms::LinkLabel^ llincome;
+	private: System::Windows::Forms::Button^ btnexit;
 
 
 
@@ -76,6 +77,7 @@ namespace personalOrganizer {
 			this->llbudget = (gcnew System::Windows::Forms::LinkLabel());
 			this->llexpenses = (gcnew System::Windows::Forms::LinkLabel());
 			this->llincome = (gcnew System::Windows::Forms::LinkLabel());
+			this->btnexit = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -151,11 +153,25 @@ namespace personalOrganizer {
 			this->llincome->Text = L"Income";
 			this->llincome->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &Dashboard::llincome_LinkClicked);
 			// 
+			// btnexit
+			// 
+			this->btnexit->BackColor = System::Drawing::SystemColors::HotTrack;
+			this->btnexit->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btnexit->Location = System::Drawing::Point(715, 425);
+			this->btnexit->Name = L"btnexit";
+			this->btnexit->Size = System::Drawing::Size(139, 39);
+			this->btnexit->TabIndex = 2;
+			this->btnexit->Text = L"Exit";
+			this->btnexit->UseVisualStyleBackColor = false;
+			this->btnexit->Click += gcnew System::EventHandler(this, &Dashboard::btnexit_Click);
+			// 
 			// Dashboard
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(883, 488);
+			this->Controls->Add(this->btnexit);
 			this->Controls->Add(this->llacademic);
 			this->Controls->Add(this->llreports);
 			this->Controls->Add(this->llbudget);
@@ -178,6 +194,9 @@ private: System::Void llincome_LinkClicked(System::Object^ sender, System::Windo
 	this->Close();
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void btnexit_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->Close();
 }
 };
 }
