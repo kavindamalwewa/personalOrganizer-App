@@ -34,18 +34,24 @@ namespace personalOrganizer {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::DateTimePicker^ dtpdate;
+	private: System::Windows::Forms::DateTimePicker^ dtpincomedate;
+	protected:
+
+	protected:
+
 	protected:
 
 	private: System::Windows::Forms::ComboBox^ cbincomesource;
-	private: System::Windows::Forms::TextBox^ tbdescription;
+	private: System::Windows::Forms::TextBox^ tbincomedescription;
+
+	private: System::Windows::Forms::TextBox^ tbincomeamount;
 
 
 
 
 
 
-	private: System::Windows::Forms::TextBox^ tbamount;
+
 
 
 	private: System::Windows::Forms::Label^ label2;
@@ -53,7 +59,8 @@ namespace personalOrganizer {
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label5;
-	private: System::Windows::Forms::TextBox^ tbincome;
+	private: System::Windows::Forms::TextBox^ tbincomename;
+
 
 	private: System::Windows::Forms::Button^ btnaddincome;
 	private: System::Windows::Forms::Button^ btnexit;
@@ -76,29 +83,29 @@ namespace personalOrganizer {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->dtpdate = (gcnew System::Windows::Forms::DateTimePicker());
+			this->dtpincomedate = (gcnew System::Windows::Forms::DateTimePicker());
 			this->cbincomesource = (gcnew System::Windows::Forms::ComboBox());
-			this->tbdescription = (gcnew System::Windows::Forms::TextBox());
-			this->tbamount = (gcnew System::Windows::Forms::TextBox());
+			this->tbincomedescription = (gcnew System::Windows::Forms::TextBox());
+			this->tbincomeamount = (gcnew System::Windows::Forms::TextBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
-			this->tbincome = (gcnew System::Windows::Forms::TextBox());
+			this->tbincomename = (gcnew System::Windows::Forms::TextBox());
 			this->btnaddincome = (gcnew System::Windows::Forms::Button());
 			this->btnexit = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
-			// dtpdate
+			// dtpincomedate
 			// 
-			this->dtpdate->CalendarFont = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->dtpdate->Location = System::Drawing::Point(99, 96);
-			this->dtpdate->Name = L"dtpdate";
-			this->dtpdate->Size = System::Drawing::Size(255, 22);
-			this->dtpdate->TabIndex = 0;
-			this->dtpdate->ValueChanged += gcnew System::EventHandler(this, &Income::dateTimePicker1_ValueChanged);
+			this->dtpincomedate->CalendarFont = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->dtpincomedate->Location = System::Drawing::Point(99, 96);
+			this->dtpincomedate->Name = L"dtpincomedate";
+			this->dtpincomedate->Size = System::Drawing::Size(255, 22);
+			this->dtpincomedate->TabIndex = 0;
+			this->dtpincomedate->ValueChanged += gcnew System::EventHandler(this, &Income::dateTimePicker1_ValueChanged);
 			// 
 			// cbincomesource
 			// 
@@ -112,20 +119,20 @@ namespace personalOrganizer {
 			this->cbincomesource->Size = System::Drawing::Size(190, 24);
 			this->cbincomesource->TabIndex = 2;
 			// 
-			// tbdescription
+			// tbincomedescription
 			// 
-			this->tbdescription->Location = System::Drawing::Point(136, 139);
-			this->tbdescription->Multiline = true;
-			this->tbdescription->Name = L"tbdescription";
-			this->tbdescription->Size = System::Drawing::Size(548, 91);
-			this->tbdescription->TabIndex = 4;
+			this->tbincomedescription->Location = System::Drawing::Point(136, 139);
+			this->tbincomedescription->Multiline = true;
+			this->tbincomedescription->Name = L"tbincomedescription";
+			this->tbincomedescription->Size = System::Drawing::Size(548, 91);
+			this->tbincomedescription->TabIndex = 4;
 			// 
-			// tbamount
+			// tbincomeamount
 			// 
-			this->tbamount->Location = System::Drawing::Point(534, 94);
-			this->tbamount->Name = L"tbamount";
-			this->tbamount->Size = System::Drawing::Size(229, 22);
-			this->tbamount->TabIndex = 5;
+			this->tbincomeamount->Location = System::Drawing::Point(534, 94);
+			this->tbincomeamount->Name = L"tbincomeamount";
+			this->tbincomeamount->Size = System::Drawing::Size(229, 22);
+			this->tbincomeamount->TabIndex = 5;
 			// 
 			// label2
 			// 
@@ -184,12 +191,12 @@ namespace personalOrganizer {
 			this->label5->TabIndex = 6;
 			this->label5->Text = L"Income Name:";
 			// 
-			// tbincome
+			// tbincomename
 			// 
-			this->tbincome->Location = System::Drawing::Point(534, 42);
-			this->tbincome->Name = L"tbincome";
-			this->tbincome->Size = System::Drawing::Size(229, 22);
-			this->tbincome->TabIndex = 5;
+			this->tbincomename->Location = System::Drawing::Point(534, 42);
+			this->tbincomename->Name = L"tbincomename";
+			this->tbincomename->Size = System::Drawing::Size(229, 22);
+			this->tbincomename->TabIndex = 5;
 			// 
 			// btnaddincome
 			// 
@@ -227,11 +234,11 @@ namespace personalOrganizer {
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->label2);
-			this->Controls->Add(this->tbincome);
-			this->Controls->Add(this->tbamount);
-			this->Controls->Add(this->tbdescription);
+			this->Controls->Add(this->tbincomename);
+			this->Controls->Add(this->tbincomeamount);
+			this->Controls->Add(this->tbincomedescription);
 			this->Controls->Add(this->cbincomesource);
-			this->Controls->Add(this->dtpdate);
+			this->Controls->Add(this->dtpincomedate);
 			this->Name = L"Income";
 			this->Text = L"Income";
 			this->Load += gcnew System::EventHandler(this, &Income::Income_Load);
