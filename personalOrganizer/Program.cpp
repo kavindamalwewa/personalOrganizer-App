@@ -36,14 +36,8 @@ void main(array<String^>^ args)
 	}
 
 	if (user != nullptr) {
-		MessageBox::Show("Successfull Authentification of " + user->name, "LoginForm.cpp", MessageBoxButtons::OK);
-		personalOrganizer::Dashboard dashboard;
-		dashboard.ShowDialog();
-
-		if (dashboard.switchToIncome) {
-			personalOrganizer::Income income;
-			income.ShowDialog();
-		}
-
+		//MessageBox::Show("Successfull Authentification of " + user->name, "LoginForm.cpp", MessageBoxButtons::OK);
+		personalOrganizer::Dashboard dashboard(user);
+		Application::Run(% dashboard);
 	}
 }
