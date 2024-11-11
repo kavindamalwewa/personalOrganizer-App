@@ -1,4 +1,5 @@
 #include"LoginForm.h"
+#include"RegisterForm.h"
 
 using namespace System;
 using namespace System::Windows::Forms;
@@ -8,11 +9,30 @@ void main(array<String^>^ args)
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
 
-	personalOrganizer::LoginForm loginForm;
-	loginForm.ShowDialog();
+	User^ user = nullptr;
+	while (true) {
+		personalOrganizer::LoginForm loginForm;
+		loginForm.ShowDialog();
 
-	User^ user = loginForm.user;
-	
+		if (loginForm.switchToRegister) {
+			personalOrganizer::RegisterForm registerform;
+			registerform.ShowDialog();
+
+			if (registerform.switchToLogin) {
+				continue;
+			}
+			else {
+				user = registerform.user;
+				break;
+			}
+		}
+		else {
+			user = loginForm.user;
+			break;
+		}
+
+	}
+
 	if (user != nullptr) {
 		MessageBox::Show("Successfull Authentification of " + user->name, "LoginForm.cpp", MessageBoxButtons::OK);
 	}
