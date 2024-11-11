@@ -85,6 +85,7 @@ namespace personalOrganizer {
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Login";
 			this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->label1->Click += gcnew System::EventHandler(this, &LoginForm::label1_Click);
 			// 
 			// label2
 			// 
@@ -246,5 +247,7 @@ namespace personalOrganizer {
 		this->switchToRegister = true;
 		this->Close();
 	}
-	};
+	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+};
 }
