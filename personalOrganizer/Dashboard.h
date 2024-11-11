@@ -35,11 +35,21 @@ namespace personalOrganizer {
 			}
 		}
 	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::LinkLabel^ llincome;
-	private: System::Windows::Forms::LinkLabel^ llexpenses;
-	private: System::Windows::Forms::LinkLabel^ llbudget;
-	private: System::Windows::Forms::LinkLabel^ llreports;
+
+
+
+
+
+
 	private: System::Windows::Forms::LinkLabel^ llacademic;
+	private: System::Windows::Forms::LinkLabel^ llreports;
+	private: System::Windows::Forms::LinkLabel^ llbudget;
+	private: System::Windows::Forms::LinkLabel^ llexpenses;
+	private: System::Windows::Forms::LinkLabel^ llincome;
+
+
+
+
 	protected:
 
 
@@ -61,11 +71,11 @@ namespace personalOrganizer {
 		void InitializeComponent(void)
 		{
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->llincome = (gcnew System::Windows::Forms::LinkLabel());
-			this->llexpenses = (gcnew System::Windows::Forms::LinkLabel());
-			this->llbudget = (gcnew System::Windows::Forms::LinkLabel());
-			this->llreports = (gcnew System::Windows::Forms::LinkLabel());
 			this->llacademic = (gcnew System::Windows::Forms::LinkLabel());
+			this->llreports = (gcnew System::Windows::Forms::LinkLabel());
+			this->llbudget = (gcnew System::Windows::Forms::LinkLabel());
+			this->llexpenses = (gcnew System::Windows::Forms::LinkLabel());
+			this->llincome = (gcnew System::Windows::Forms::LinkLabel());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -79,42 +89,17 @@ namespace personalOrganizer {
 			this->label1->Text = L"Welcome to Personal Organizer App\r\n";
 			this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
-			// llincome
+			// llacademic
 			// 
-			this->llincome->AutoSize = true;
-			this->llincome->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->llacademic->AutoSize = true;
+			this->llacademic->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->llincome->Location = System::Drawing::Point(12, 262);
-			this->llincome->Name = L"llincome";
-			this->llincome->Size = System::Drawing::Size(117, 36);
-			this->llincome->TabIndex = 1;
-			this->llincome->TabStop = true;
-			this->llincome->Text = L"Income";
-			this->llincome->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &Dashboard::llincome_LinkClicked);
-			// 
-			// llexpenses
-			// 
-			this->llexpenses->AutoSize = true;
-			this->llexpenses->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->llexpenses->Location = System::Drawing::Point(163, 262);
-			this->llexpenses->Name = L"llexpenses";
-			this->llexpenses->Size = System::Drawing::Size(154, 36);
-			this->llexpenses->TabIndex = 1;
-			this->llexpenses->TabStop = true;
-			this->llexpenses->Text = L"Expenses";
-			// 
-			// llbudget
-			// 
-			this->llbudget->AutoSize = true;
-			this->llbudget->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->llbudget->Location = System::Drawing::Point(373, 262);
-			this->llbudget->Name = L"llbudget";
-			this->llbudget->Size = System::Drawing::Size(116, 36);
-			this->llbudget->TabIndex = 1;
-			this->llbudget->TabStop = true;
-			this->llbudget->Text = L"Budget";
+			this->llacademic->Location = System::Drawing::Point(709, 244);
+			this->llacademic->Name = L"llacademic";
+			this->llacademic->Size = System::Drawing::Size(162, 72);
+			this->llacademic->TabIndex = 1;
+			this->llacademic->TabStop = true;
+			this->llacademic->Text = L"Academic \r\nSchedule\r\n";
 			// 
 			// llreports
 			// 
@@ -129,17 +114,42 @@ namespace personalOrganizer {
 			this->llreports->Text = L"Reports";
 			this->llreports->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &Dashboard::linkLabel4_LinkClicked);
 			// 
-			// llacademic
+			// llbudget
 			// 
-			this->llacademic->AutoSize = true;
-			this->llacademic->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->llbudget->AutoSize = true;
+			this->llbudget->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->llacademic->Location = System::Drawing::Point(709, 244);
-			this->llacademic->Name = L"llacademic";
-			this->llacademic->Size = System::Drawing::Size(162, 72);
-			this->llacademic->TabIndex = 1;
-			this->llacademic->TabStop = true;
-			this->llacademic->Text = L"Academic \r\nSchedule\r\n";
+			this->llbudget->Location = System::Drawing::Point(373, 262);
+			this->llbudget->Name = L"llbudget";
+			this->llbudget->Size = System::Drawing::Size(116, 36);
+			this->llbudget->TabIndex = 1;
+			this->llbudget->TabStop = true;
+			this->llbudget->Text = L"Budget";
+			// 
+			// llexpenses
+			// 
+			this->llexpenses->AutoSize = true;
+			this->llexpenses->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->llexpenses->Location = System::Drawing::Point(163, 262);
+			this->llexpenses->Name = L"llexpenses";
+			this->llexpenses->Size = System::Drawing::Size(154, 36);
+			this->llexpenses->TabIndex = 1;
+			this->llexpenses->TabStop = true;
+			this->llexpenses->Text = L"Expenses";
+			// 
+			// llincome
+			// 
+			this->llincome->AutoSize = true;
+			this->llincome->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->llincome->Location = System::Drawing::Point(12, 262);
+			this->llincome->Name = L"llincome";
+			this->llincome->Size = System::Drawing::Size(117, 36);
+			this->llincome->TabIndex = 1;
+			this->llincome->TabStop = true;
+			this->llincome->Text = L"Income";
+			this->llincome->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &Dashboard::llincome_LinkClicked);
 			// 
 			// Dashboard
 			// 
@@ -166,6 +176,8 @@ public: bool switchToIncome = false;
 private: System::Void llincome_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
 	this->switchToIncome = true;
 	this->Close();
+}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
