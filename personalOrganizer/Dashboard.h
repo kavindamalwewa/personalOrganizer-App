@@ -1,4 +1,6 @@
 #pragma once
+#include"User.h"
+#include"Income.h"
 
 namespace personalOrganizer {
 
@@ -15,7 +17,7 @@ namespace personalOrganizer {
 	public ref class Dashboard : public System::Windows::Forms::Form
 	{
 	public:
-		Dashboard(void)
+		Dashboard(User^ user)
 		{
 			InitializeComponent();
 			//
@@ -188,10 +190,9 @@ namespace personalOrganizer {
 	private: System::Void linkLabel4_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
 	}
 
-public: bool switchToIncome = false;
 private: System::Void llincome_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
-	this->switchToIncome = true;
-	this->Close();
+	Income^ incomeform = gcnew Income();
+	incomeform->ShowDialog();
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 }
