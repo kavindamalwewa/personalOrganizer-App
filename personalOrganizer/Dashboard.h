@@ -18,9 +18,11 @@ namespace personalOrganizer {
 	public ref class Dashboard : public System::Windows::Forms::Form
 	{
 	public:
+		String^ loggedInUsername;
 		Dashboard(User^ user)
 		{
 			InitializeComponent();
+			loggedInUsername = user->name;
 			//
 			//TODO: Add the constructor code here
 			//
@@ -184,6 +186,7 @@ namespace personalOrganizer {
 			this->Controls->Add(this->label1);
 			this->Name = L"Dashboard";
 			this->Text = L"Dashboard";
+			this->Load += gcnew System::EventHandler(this, &Dashboard::Dashboard_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -193,7 +196,7 @@ namespace personalOrganizer {
 	}
 
 private: System::Void llincome_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
-	Income^ incomeform = gcnew Income();
+	Income^ incomeform = gcnew Income(loggedInUsername);
 	incomeform->ShowDialog();
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -202,8 +205,10 @@ private: System::Void btnexit_Click(System::Object^ sender, System::EventArgs^ e
 	this->Close();
 }
 private: System::Void llexpenses_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
-	ExpensesForm^ expensesform = gcnew ExpensesForm();
+	ExpensesForm^ expensesform = gcnew ExpensesForm(loggedInUsername);
 	expensesform->ShowDialog();
+}
+private: System::Void Dashboard_Load(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
