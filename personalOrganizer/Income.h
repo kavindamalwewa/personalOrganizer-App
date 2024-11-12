@@ -1,4 +1,5 @@
 #pragma once
+#include"User.h"
 
 namespace personalOrganizer {
 
@@ -8,6 +9,7 @@ namespace personalOrganizer {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Data::SqlClient;
 
 	/// <summary>
 	/// Summary for Income
@@ -15,13 +17,20 @@ namespace personalOrganizer {
 	public ref class Income : public System::Windows::Forms::Form
 	{
 	public:
-		Income(void)
-		{
+		String^ name;
+
+		Income(String^ loggedInUsername) {
 			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
+			name = loggedInUsername;
 		}
+
+		//Income(void)
+		//{
+		//	InitializeComponent();
+		//	//
+		//	//TODO: Add the constructor code here
+		//	//
+		//}
 
 	protected:
 		/// <summary>
@@ -114,14 +123,14 @@ namespace personalOrganizer {
 				L"Job", L"Allowance from parents", L"Scholarships",
 					L"Student Aid"
 			});
-			this->cbincomesource->Location = System::Drawing::Point(164, 42);
+			this->cbincomesource->Location = System::Drawing::Point(180, 42);
 			this->cbincomesource->Name = L"cbincomesource";
-			this->cbincomesource->Size = System::Drawing::Size(190, 24);
+			this->cbincomesource->Size = System::Drawing::Size(174, 24);
 			this->cbincomesource->TabIndex = 2;
 			// 
 			// tbincomedescription
 			// 
-			this->tbincomedescription->Location = System::Drawing::Point(136, 139);
+			this->tbincomedescription->Location = System::Drawing::Point(158, 139);
 			this->tbincomedescription->Multiline = true;
 			this->tbincomedescription->Name = L"tbincomedescription";
 			this->tbincomedescription->Size = System::Drawing::Size(548, 91);
@@ -258,7 +267,49 @@ private: System::Void dateTimePicker1_ValueChanged(System::Object^ sender, Syste
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Close();
 }
+
+//public: User^ user = nullptr;
 private: System::Void btnaddincome_Click(System::Object^ sender, System::EventArgs^ e) {
+	String^ incomesource = cbincomesource->Text;
+	String^ incomename = tbincomename->Text;
+	String^ incomedate = dtpincomedate->Value.ToString("yyyy-MM-dd");
+	String^ incomeamount = tbincomeamount->Text;
+	String^ incomedescription = tbincomedescription->Text;
+
+	if (incomesource->Length == 0 || incomename->Length == 0 || incomedate->Length == 0 || incomeamount->Length == 0 || incomedescription->Length == 0) {
+		MessageBox::Show("Please enter all the feilds", "On or more empty fields", MessageBoxButtons::OK);
+		return;
+	}
+
+	try {
+		String^ connString = "Data Source=KAVINDA_MALWEWA\\sqlexpress;Initial Catalog=useraccountsystem;Integrated Security=True;TrustServerCertificate=True";
+		SqlConnection sqlConn(connString);
+		sqlConn.Open();
+
+		if (String::IsNullOrEmpty(name)) {
+			MessageBox::Show("Username is not set.", "Error", MessageBoxButtons::OK);
+			return;
+		}
+
+		String^ sqlQuery = "INSERT INTO income" + "(name,incomesource,incomename,incomeamount,incomedate,incomedescription) VALUES" + "(@name,@incomesource,@incomename,@incomeamount,@incomedate,@incomedescription);";
+
+		SqlCommand command(sqlQuery, % sqlConn);
+		command.Parameters->AddWithValue("@name",name);
+		command.Parameters->AddWithValue("@incomesource", incomesource);
+		command.Parameters->AddWithValue("@incomename", incomename);
+		command.Parameters->AddWithValue("@incomeamount", incomeamount);
+		command.Parameters->AddWithValue("@incomedate", incomedate);
+		command.Parameters->AddWithValue("@incomedescription", incomedescription);
+
+		command.ExecuteNonQuery();
+		MessageBox::Show("Income record added successfully!", "Success", MessageBoxButtons::OK);
+		this->Close();
+	}
+
+	catch (Exception^ ex) {
+		MessageBox::Show("Failed to Update Income. Error:" + ex->Message, "Income Failure", MessageBoxButtons::OK);
+	}
+
 
 }
 };

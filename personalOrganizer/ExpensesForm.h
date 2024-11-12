@@ -175,9 +175,9 @@ namespace personalOrganizer {
 			// 
 			// tbexpensename
 			// 
-			this->tbexpensename->Location = System::Drawing::Point(559, 52);
+			this->tbexpensename->Location = System::Drawing::Point(579, 52);
 			this->tbexpensename->Name = L"tbexpensename";
-			this->tbexpensename->Size = System::Drawing::Size(229, 22);
+			this->tbexpensename->Size = System::Drawing::Size(209, 22);
 			this->tbexpensename->TabIndex = 11;
 			// 
 			// tbexpenseamount
@@ -189,7 +189,7 @@ namespace personalOrganizer {
 			// 
 			// tbexpensedescription
 			// 
-			this->tbexpensedescription->Location = System::Drawing::Point(163, 143);
+			this->tbexpensedescription->Location = System::Drawing::Point(190, 141);
 			this->tbexpensedescription->Multiline = true;
 			this->tbexpensedescription->Name = L"tbexpensedescription";
 			this->tbexpensedescription->Size = System::Drawing::Size(546, 91);
@@ -202,9 +202,9 @@ namespace personalOrganizer {
 				L"Food", L"Entertainment", L"Travelling",
 					L"Clothing", L"Education Equipment", L"University Fees"
 			});
-			this->cbexpensesource->Location = System::Drawing::Point(189, 50);
+			this->cbexpensesource->Location = System::Drawing::Point(214, 50);
 			this->cbexpensesource->Name = L"cbexpensesource";
-			this->cbexpensesource->Size = System::Drawing::Size(190, 24);
+			this->cbexpensesource->Size = System::Drawing::Size(165, 24);
 			this->cbexpensesource->TabIndex = 9;
 			// 
 			// dtpexpensedate
@@ -235,6 +235,7 @@ namespace personalOrganizer {
 			this->Controls->Add(this->dtpexpensedate);
 			this->Name = L"ExpensesForm";
 			this->Text = L"ExpensesForm";
+			this->Load += gcnew System::EventHandler(this, &ExpensesForm::ExpensesForm_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -244,6 +245,8 @@ namespace personalOrganizer {
 	}
 private: System::Void btnexit_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Close();
+}
+private: System::Void ExpensesForm_Load(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
