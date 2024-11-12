@@ -1,4 +1,5 @@
 #pragma once
+#include"User.h"
 
 namespace personalOrganizer {
 
@@ -8,6 +9,7 @@ namespace personalOrganizer {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Data::SqlClient;
 
 	/// <summary>
 	/// Summary for ExpensesForm
@@ -15,13 +17,20 @@ namespace personalOrganizer {
 	public ref class ExpensesForm : public System::Windows::Forms::Form
 	{
 	public:
-		ExpensesForm(void)
-		{
+		String^ name;
+
+		ExpensesForm(String^ loggedInUsername) {
 			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
+			name = loggedInUsername;
 		}
+
+		//ExpensesForm(void)
+		//{
+		//	InitializeComponent();
+		//	//
+		//	//TODO: Add the constructor code here
+		//	//
+		//}
 
 	protected:
 		/// <summary>
@@ -117,6 +126,7 @@ namespace personalOrganizer {
 			this->btnaddincome->TabIndex = 19;
 			this->btnaddincome->Text = L"Add Expense";
 			this->btnaddincome->UseVisualStyleBackColor = true;
+			this->btnaddincome->Click += gcnew System::EventHandler(this, &ExpensesForm::btnaddincome_Click);
 			// 
 			// label4
 			// 
@@ -212,9 +222,12 @@ namespace personalOrganizer {
 			this->dtpexpensedate->CalendarFont = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->dtpexpensedate->Location = System::Drawing::Point(124, 100);
+			this->dtpexpensedate->MaxDate = System::DateTime(2024, 11, 12, 0, 0, 0, 0);
+			this->dtpexpensedate->MinDate = System::DateTime(2024, 10, 12, 0, 0, 0, 0);
 			this->dtpexpensedate->Name = L"dtpexpensedate";
 			this->dtpexpensedate->Size = System::Drawing::Size(255, 22);
 			this->dtpexpensedate->TabIndex = 8;
+			this->dtpexpensedate->Value = System::DateTime(2024, 11, 12, 0, 0, 0, 0);
 			// 
 			// ExpensesForm
 			// 
@@ -247,6 +260,47 @@ private: System::Void btnexit_Click(System::Object^ sender, System::EventArgs^ e
 	this->Close();
 }
 private: System::Void ExpensesForm_Load(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void btnaddincome_Click(System::Object^ sender, System::EventArgs^ e) {
+	String^ expensesource = cbexpensesource->Text;
+	String^ expensename = tbexpensename->Text;
+	String^ expensedate = dtpexpensedate->Value.ToString("yyyy-MM-dd");
+	String^ expenseamount = tbexpenseamount->Text;
+	String^ expensedescription = tbexpensedescription->Text;
+
+	if (expensesource->Length == 0 || expensename->Length == 0 || expensedate->Length == 0 || expenseamount->Length == 0 || expensedescription->Length == 0) {
+		MessageBox::Show("Please enter all the feilds", "On or more empty fields", MessageBoxButtons::OK);
+		return;
+	}
+
+	try {
+		String^ connString = "Data Source=KAVINDA_MALWEWA\\sqlexpress;Initial Catalog=useraccountsystem;Integrated Security=True;TrustServerCertificate=True";
+		SqlConnection sqlConn(connString);
+		sqlConn.Open();
+
+		if (String::IsNullOrEmpty(name)) {
+			MessageBox::Show("Username is not set.", "Error", MessageBoxButtons::OK);
+			return;
+		}
+
+		String^ sqlQuery = "INSERT INTO expense" + "(name,expensesource,expensename,expenseamount,expensedate,expensedescription) VALUES" + "(@name,@expensesource,@expensename,@expenseamount,@expensedate,@expensedescription);";
+
+		SqlCommand command(sqlQuery, % sqlConn);
+		command.Parameters->AddWithValue("@name", name);
+		command.Parameters->AddWithValue("@expensesource", expensesource);
+		command.Parameters->AddWithValue("@expensename", expensename);
+		command.Parameters->AddWithValue("@expenseamount", expenseamount);
+		command.Parameters->AddWithValue("@expensedate", expensedate);
+		command.Parameters->AddWithValue("@expensedescription", expensedescription);
+
+		command.ExecuteNonQuery();
+		MessageBox::Show("Expense record added successfully!", "Success", MessageBoxButtons::OK);
+		this->Close();
+	}
+
+	catch (Exception^ ex) {
+		MessageBox::Show("Failed to Update Expense. Error:" + ex->Message, "Expense Failure", MessageBoxButtons::OK);
+	}
 }
 };
 }

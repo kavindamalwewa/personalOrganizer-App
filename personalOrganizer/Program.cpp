@@ -1,7 +1,6 @@
 #include"LoginForm.h"
 #include"RegisterForm.h"
 #include"Dashboard.h"
-#include"Income.h"
 
 using namespace System;
 using namespace System::Windows::Forms;

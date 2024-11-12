@@ -111,9 +111,12 @@ namespace personalOrganizer {
 			this->dtpincomedate->CalendarFont = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->dtpincomedate->Location = System::Drawing::Point(99, 96);
+			this->dtpincomedate->MaxDate = System::DateTime(2024, 11, 12, 0, 0, 0, 0);
+			this->dtpincomedate->MinDate = System::DateTime(2024, 10, 12, 0, 0, 0, 0);
 			this->dtpincomedate->Name = L"dtpincomedate";
 			this->dtpincomedate->Size = System::Drawing::Size(255, 22);
 			this->dtpincomedate->TabIndex = 0;
+			this->dtpincomedate->Value = System::DateTime(2024, 11, 12, 0, 0, 0, 0);
 			this->dtpincomedate->ValueChanged += gcnew System::EventHandler(this, &Income::dateTimePicker1_ValueChanged);
 			// 
 			// cbincomesource
