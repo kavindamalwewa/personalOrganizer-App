@@ -205,7 +205,7 @@ private: System::Void btnexit_Click(System::Object^ sender, System::EventArgs^ e
 	this->Close();
 }
 private: System::Void llexpenses_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
-	ExpensesForm^ expensesform = gcnew ExpensesForm();
+	ExpensesForm^ expensesform = gcnew ExpensesForm(loggedInUsername);
 	expensesform->ShowDialog();
 }
 private: System::Void Dashboard_Load(System::Object^ sender, System::EventArgs^ e) {
