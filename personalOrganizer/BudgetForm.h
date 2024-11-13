@@ -58,7 +58,7 @@ namespace personalOrganizer {
 				foodspent->Text = expenseResult->ToString();
 			}
 			else {
-				foodspent->Text = "No expenses for Transportation";
+				foodspent->Text = "No expenses for Food";
 			}
 
 			////////////////////// FOOD REMAIN CALCULATION ////////////////////////////////
