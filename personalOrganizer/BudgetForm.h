@@ -19,7 +19,7 @@ namespace personalOrganizer {
 	private:
 		String^ name;
 
-	private: System::Void DisplayTransportationBudget() {
+	private: System::Void DisplayBudgetDetails() {
 		try {
 			String^ connString = "Data Source=KAVINDA_MALWEWA\\sqlexpress;Initial Catalog=useraccountsystem;Integrated Security=True;TrustServerCertificate=True";
 			SqlConnection sqlConn(connString);
@@ -347,7 +347,7 @@ namespace personalOrganizer {
 
 			if (name != nullptr) {
 				lbUserInfo->Text = "Hi, " + name + ", please set your budget";
-				DisplayTransportationBudget();  // Call to display transportation budget
+				DisplayBudgetDetails();  // Call to display budget details
 			}
 			else {
 				lbUserInfo->Text = "Username not found";
@@ -1055,7 +1055,7 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 private: System::Void label8_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	DisplayTransportationBudget();
+	DisplayBudgetDetails();
 }
 };
 }
