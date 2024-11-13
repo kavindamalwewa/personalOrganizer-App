@@ -186,52 +186,151 @@ namespace personalOrganizer {
 			}
 
 
-			////////////////////// OTHER BUDGET LABEL ////////////////////////////////
-			//String^ otSqlQuery = "SELECT amount FROM budget WHERE username = @username AND category = 'Other'";
-			//SqlCommand otCommand(otSqlQuery, % sqlConn);
-			//otCommand.Parameters->AddWithValue("@username", username);
+			////////////////////// TRAVELLING BUDGET LABEL ////////////////////////////////
+			
+			String^ traSqlQuery = "SELECT budgetAmount FROM budget WHERE name = @name AND budgetSource = 'Travelling'";
+			SqlCommand traCommand(traSqlQuery, % sqlConn);
+			traCommand.Parameters->AddWithValue("@name", name);
 
-			//Object^ otResult = otCommand.ExecuteScalar();
+			Object^ traResult = traCommand.ExecuteScalar();
 
-			//if (otResult != nullptr) {
-			//	otBudget->Text = otResult->ToString();
-			//}
-			//else {
-			//	otBudget->Text = "No budget set for Other";
-			//}
+			if (traResult != nullptr) {
+				travelbudget->Text = traResult->ToString();
+			}
+			else {
+				travelbudget->Text = "No budget set for Travelling";
+			}
 
-			////////////////////// OTHER SPENT LABEL ////////////////////////////////
+			////////////////////// TRAVELLING SPENT LABEL ////////////////////////////////
 
-			//String^ otExpenseQuery = "SELECT SUM(expense) FROM expense WHERE username = @username AND expensetype = 'Other'";
-			//SqlCommand otExpenseCommand(otExpenseQuery, % sqlConn);
-			//otExpenseCommand.Parameters->AddWithValue("@username", username);
+			String^ traExpenseQuery = "SELECT SUM(expenseamount) FROM expense WHERE name = @name AND expensesource = 'Travelling'";
+			SqlCommand traExpenseCommand(traExpenseQuery, % sqlConn);
+			traExpenseCommand.Parameters->AddWithValue("@name", name);
 
-			//Object^ otExpenseResult = otExpenseCommand.ExecuteScalar();
+			Object^ traExpenseResult = traExpenseCommand.ExecuteScalar();
 
-			//if (otExpenseResult != nullptr && otExpenseResult->ToString() != "") {
-			//	otSpent->Text = otExpenseResult->ToString();
-			//}
-			//else {
-			//	otSpent->Text = "No expenses for Other";
-			//}
+			if (traExpenseResult != nullptr && traExpenseResult->ToString() != "") {
+				travelspent->Text = traExpenseResult->ToString();
+			}
+			else {
+				travelspent->Text = "No expenses for Travelling";
+			}
 
-			////////////////////// OTHER CALCULATION ////////////////////////////////
+			////////////////////// TRAVELLING CALCULATION ////////////////////////////////
 
-			//if (otBudget->Text != "No budget set for Other" && otSpent->Text != "No expenses for Other") {
-			//	float otBudgetAmount = Convert::ToSingle(otBudget->Text);
-			//	float otSpentAmount = Convert::ToSingle(otSpent->Text);
+			if (travelbudget->Text != "No budget set for Travelling" && travelspent->Text != "No expenses for Travelling") {
+				float traBudgetAmount = Convert::ToSingle(travelbudget->Text);
+				float traSpentAmount = Convert::ToSingle(travelspent->Text);
 
-			//	float otBalanceAmount = otBudgetAmount - otSpentAmount;
+				float traBalanceAmount = traBudgetAmount - traSpentAmount;
 
-			//	otBalance->Text = otBalanceAmount.ToString("F2");
+				travelremain->Text = traBalanceAmount.ToString("F2");
 
-			//	if (otBalanceAmount < 500) {
-			//		MessageBox::Show("You have a low remaining balance for Other", "Low Balance Alert", MessageBoxButtons::OK, MessageBoxIcon::Warning);
-			//	}
-			//}
-			//else {
-			//	otBalance->Text = "N/A";
-			//}
+				if (traBalanceAmount < 500) {
+					MessageBox::Show("You have a low remaining balance for Travelling", "Low Balance Alert", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				}
+			}
+			else {
+				travelremain->Text = "N/A";
+			}
+
+
+			////////////////////// EDUCATION BUDGET LABEL ////////////////////////////////
+
+			String^ eduSqlQuery = "SELECT budgetAmount FROM budget WHERE name = @name AND budgetSource = 'Education Equipment'";
+			SqlCommand eduCommand(eduSqlQuery, % sqlConn);
+			eduCommand.Parameters->AddWithValue("@name", name);
+
+			Object^ eduResult = eduCommand.ExecuteScalar();
+
+			if (eduResult != nullptr) {
+				edubudget->Text = eduResult->ToString();
+			}
+			else {
+				edubudget->Text = "No budget set for Education Equipment";
+			}
+
+			////////////////////// EDUCATION SPENT LABEL ////////////////////////////////
+
+			String^ eduExpenseQuery = "SELECT SUM(expenseamount) FROM expense WHERE name = @name AND expensesource = 'Education Equipment'";
+			SqlCommand eduExpenseCommand(eduExpenseQuery, % sqlConn);
+			eduExpenseCommand.Parameters->AddWithValue("@name", name);
+
+			Object^ eduExpenseResult = eduExpenseCommand.ExecuteScalar();
+
+			if (eduExpenseResult != nullptr && eduExpenseResult->ToString() != "") {
+				eduspent->Text = eduExpenseResult->ToString();
+			}
+			else {
+				eduspent->Text = "No expenses for Education Equipment";
+			}
+
+			////////////////////// EDUCATION CALCULATION ////////////////////////////////
+
+			if (edubudget->Text != "No budget set for Education Equipment" && eduspent->Text != "No expenses for Education Equipment") {
+				float eduBudgetAmount = Convert::ToSingle(edubudget->Text);
+				float eduSpentAmount = Convert::ToSingle(eduspent->Text);
+
+				float eduBalanceAmount = eduBudgetAmount - eduSpentAmount;
+
+				eduremain->Text = eduBalanceAmount.ToString("F2");
+
+				if (eduBalanceAmount < 500) {
+					MessageBox::Show("You have a low remaining balance for Education Equipment", "Low Balance Alert", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				}
+			}
+			else {
+				eduremain->Text = "N/A";
+			}
+
+
+			////////////////////// UNIVERSITY BUDGET LABEL ////////////////////////////////
+
+			String^ uniSqlQuery = "SELECT budgetAmount FROM budget WHERE name = @name AND budgetSource = 'University Fees'";
+			SqlCommand uniCommand(uniSqlQuery, % sqlConn);
+			uniCommand.Parameters->AddWithValue("@name", name);
+
+			Object^ uniResult = uniCommand.ExecuteScalar();
+
+			if (uniResult != nullptr) {
+				unibudget->Text = uniResult->ToString();
+			}
+			else {
+				unibudget->Text = "No budget set for University Fees";
+			}
+
+			////////////////////// UNIVERSITY SPENT LABEL ////////////////////////////////
+
+			String^ uniExpenseQuery = "SELECT SUM(expenseamount) FROM expense WHERE name = @name AND expensesource = 'University Fees'";
+			SqlCommand uniExpenseCommand(uniExpenseQuery, % sqlConn);
+			uniExpenseCommand.Parameters->AddWithValue("@name", name);
+
+			Object^ uniExpenseResult = uniExpenseCommand.ExecuteScalar();
+
+			if (uniExpenseResult != nullptr && uniExpenseResult->ToString() != "") {
+				unispent->Text = uniExpenseResult->ToString();
+			}
+			else {
+				unispent->Text = "No expenses for University Fees";
+			}
+
+			////////////////////// UNIVERSITY CALCULATION ////////////////////////////////
+
+			if (unibudget->Text != "No budget set for University Fees" && unispent->Text != "No expenses for University Fees") {
+				float uniBudgetAmount = Convert::ToSingle(unibudget->Text);
+				float uniSpentAmount = Convert::ToSingle(unispent->Text);
+
+				float uniBalanceAmount = uniBudgetAmount - uniSpentAmount;
+
+				uniremain->Text = uniBalanceAmount.ToString("F2");
+
+				if (uniBalanceAmount < 500) {
+					MessageBox::Show("You have a low remaining balance for University Fees", "Low Balance Alert", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				}
+			}
+			else {
+				uniremain->Text = "N/A";
+			}
 
 
 			sqlConn.Close();
