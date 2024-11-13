@@ -2,6 +2,7 @@
 #include"User.h"
 #include"Income.h"
 #include"ExpensesForm.h"
+#include"BudgetForm.h"
 
 namespace personalOrganizer {
 
@@ -132,6 +133,7 @@ namespace personalOrganizer {
 			this->llbudget->TabIndex = 1;
 			this->llbudget->TabStop = true;
 			this->llbudget->Text = L"Budget";
+			this->llbudget->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &Dashboard::llbudget_LinkClicked);
 			// 
 			// llexpenses
 			// 
@@ -209,6 +211,10 @@ private: System::Void llexpenses_LinkClicked(System::Object^ sender, System::Win
 	expensesform->ShowDialog();
 }
 private: System::Void Dashboard_Load(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void llbudget_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
+	BudgetForm^ budgetform = gcnew BudgetForm();
+	budgetform->ShowDialog();
 }
 };
 }

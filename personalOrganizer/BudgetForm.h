@@ -115,7 +115,7 @@ namespace personalOrganizer {
 			this->label4->AutoSize = true;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(395, 108);
+			this->label4->Location = System::Drawing::Point(414, 106);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(84, 20);
 			this->label4->TabIndex = 20;
@@ -136,7 +136,7 @@ namespace personalOrganizer {
 			// 
 			// tbbudgetamount
 			// 
-			this->tbbudgetamount->Location = System::Drawing::Point(485, 104);
+			this->tbbudgetamount->Location = System::Drawing::Point(518, 104);
 			this->tbbudgetamount->Name = L"tbbudgetamount";
 			this->tbbudgetamount->Size = System::Drawing::Size(165, 22);
 			this->tbbudgetamount->TabIndex = 19;
@@ -149,7 +149,7 @@ namespace personalOrganizer {
 				L"Food", L"Entertainment", L"Travelling",
 					L"Clothing", L"Education Equipment", L"University Fees"
 			});
-			this->cbbudgetsource->Location = System::Drawing::Point(175, 104);
+			this->cbbudgetsource->Location = System::Drawing::Point(202, 102);
 			this->cbbudgetsource->Name = L"cbbudgetsource";
 			this->cbbudgetsource->Size = System::Drawing::Size(165, 24);
 			this->cbbudgetsource->TabIndex = 18;
@@ -189,7 +189,7 @@ namespace personalOrganizer {
 			// 
 			this->button3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button3->Location = System::Drawing::Point(701, 97);
+			this->button3->Location = System::Drawing::Point(718, 97);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(150, 37);
 			this->button3->TabIndex = 0;
@@ -306,6 +306,7 @@ private: System::Void tableLayoutPanel1_Paint(System::Object^ sender, System::Wi
 private: System::Void label4_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->Close();
 }
 private: System::Void label8_Click(System::Object^ sender, System::EventArgs^ e) {
 }
