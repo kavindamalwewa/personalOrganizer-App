@@ -18,11 +18,405 @@ namespace personalOrganizer {
 	{
 	private:
 		String^ name;
+
+	private: System::Void DisplayTransportationBudget() {
+		try {
+			String^ connString = "Data Source=KAVINDA_MALWEWA\\sqlexpress;Initial Catalog=useraccountsystem;Integrated Security=True;TrustServerCertificate=True";
+			SqlConnection sqlConn(connString);
+			sqlConn.Open();
+
+			if (String::IsNullOrEmpty(name)) {
+				MessageBox::Show("Username is not set.", "Error", MessageBoxButtons::OK);
+				return;
+			}
+
+
+
+			//////////////////// FOOD BUDGET LABEL ////////////////////////////////
+			String^ sqlQuery = "SELECT budgetAmount FROM budget WHERE name = @name AND budgetSource = 'Food'";
+			SqlCommand command(sqlQuery, % sqlConn);
+			command.Parameters->AddWithValue("@name", name);
+
+			Object^ result = command.ExecuteScalar();
+
+			if (result != nullptr) {
+				foodbudget->Text = result->ToString();
+			}
+			else {
+				foodbudget->Text = "No budget set for Food";
+			}
+
+			//////////////////// FOOD SPENT LABEL ////////////////////////////////
+
+			String^ expenseQuery = "SELECT SUM(expenseamount) FROM expense WHERE name = @name AND expensesource = 'Food'";
+			SqlCommand expenseCommand(expenseQuery, % sqlConn);
+			expenseCommand.Parameters->AddWithValue("@name", name);
+
+			Object^ expenseResult = expenseCommand.ExecuteScalar();
+
+			if (expenseResult != nullptr && expenseResult->ToString() != "") {
+				foodspent->Text = expenseResult->ToString();
+			}
+			else {
+				foodspent->Text = "No expenses for Transportation";
+			}
+
+			////////////////////// FOOD REMAIN CALCULATION ////////////////////////////////
+
+			if (foodbudget->Text != "No budget set for Food" && foodspent->Text != "No expenses for Food") {
+				// Convert the values from labels to float for calculation
+				float budgetAmount = Convert::ToSingle(foodbudget->Text);
+				float spentAmount = Convert::ToSingle(foodspent->Text);
+
+				float balance = budgetAmount - spentAmount;
+
+			//	// Display the balance in lbTransportBalance
+				foodremain->Text = balance.ToString("F2");  // Format to 2 decimal places
+
+				if (balance < 500) {
+					MessageBox::Show("You have a low remaining balance for Food ", "Low Balance Alert", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				}
+			}
+			else {
+				foodremain->Text = "N/A";
+			}
+
+
+
+
+
+
+
+			////////////////////// FOOD BUDGET LABEL ////////////////////////////////
+
+			//String^ foodSqlQuery = "SELECT amount FROM budget WHERE username = @username AND category = 'Food'";
+			//SqlCommand foodCommand(foodSqlQuery, % sqlConn);
+			//foodCommand.Parameters->AddWithValue("@username", username);
+
+			//Object^ foodResult = foodCommand.ExecuteScalar();
+
+			//if (foodResult != nullptr) {
+			//	foodBudget->Text = foodResult->ToString();
+			//}
+			//else {
+			//	foodBudget->Text = "No budget set for Food";
+			//}
+
+			////////////////////// FOOD SPENT LABEL ////////////////////////////////
+
+			//String^ foodExpenseQuery = "SELECT SUM(expense) FROM expense WHERE username = @username AND expensetype = 'Food'";
+			//SqlCommand foodExpenseCommand(foodExpenseQuery, % sqlConn);
+			//foodExpenseCommand.Parameters->AddWithValue("@username", username);
+
+			//Object^ foodExpenseResult = foodExpenseCommand.ExecuteScalar();
+
+			//if (foodExpenseResult != nullptr && foodExpenseResult->ToString() != "") {
+			//	foodSpent->Text = foodExpenseResult->ToString();
+			//}
+			//else {
+			//	foodSpent->Text = "No expenses for Food";
+			//}
+
+			////////////////////// FOOD CALCULATION ////////////////////////////////
+
+			//if (foodBudget->Text != "No budget set for Food" && foodSpent->Text != "No expenses for Food") {
+			//	// Convert the values from labels to float for calculation
+			//	float foodBudgetAmount = Convert::ToSingle(foodBudget->Text);
+			//	float foodSpentAmount = Convert::ToSingle(foodSpent->Text);
+
+			//	float foodBalanceAmount = foodBudgetAmount - foodSpentAmount;
+
+			//	// Display the balance in foodBalance
+			//	foodBalance->Text = foodBalanceAmount.ToString("F2");  // Format to 2 decimal places
+
+			//	if (foodBalanceAmount < 500) {
+			//		MessageBox::Show("You have a low remaining balance for Food", "Low Balance Alert", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			//	}
+			//}
+			//else {
+			//	foodBalance->Text = "N/A";
+			//}
+
+
+
+
+			////////////////////// GROCERIES BUDGET LABEL ////////////////////////////////
+			//String^ grocSqlQuery = "SELECT amount FROM budget WHERE username = @username AND category = 'Groceries'";
+			//SqlCommand grocCommand(grocSqlQuery, % sqlConn);
+			//grocCommand.Parameters->AddWithValue("@username", username);
+
+			//Object^ grocResult = grocCommand.ExecuteScalar();
+
+			//if (grocResult != nullptr) {
+			//	grocBudget->Text = grocResult->ToString();
+			//}
+			//else {
+			//	grocBudget->Text = "No budget set for Groceries";
+			//}
+
+			////////////////////// GROCERIES SPENT LABEL ////////////////////////////////
+
+			//String^ grocExpenseQuery = "SELECT SUM(expense) FROM expense WHERE username = @username AND expensetype = 'Groceries'";
+			//SqlCommand grocExpenseCommand(grocExpenseQuery, % sqlConn);
+			//grocExpenseCommand.Parameters->AddWithValue("@username", username);
+
+			//Object^ grocExpenseResult = grocExpenseCommand.ExecuteScalar();
+
+			//if (grocExpenseResult != nullptr && grocExpenseResult->ToString() != "") {
+			//	grocSpent->Text = grocExpenseResult->ToString();
+			//}
+			//else {
+			//	grocSpent->Text = "No expenses for Groceries";
+			//}
+
+			////////////////////// GROCERIES CALCULATION ////////////////////////////////
+
+			//if (grocBudget->Text != "No budget set for Groceries" && grocSpent->Text != "No expenses for Groceries") {
+			//	float grocBudgetAmount = Convert::ToSingle(grocBudget->Text);
+			//	float grocSpentAmount = Convert::ToSingle(grocSpent->Text);
+
+			//	float grocBalanceAmount = grocBudgetAmount - grocSpentAmount;
+
+			//	grocBalance->Text = grocBalanceAmount.ToString("F2");
+
+			//	if (grocBalanceAmount < 500) {
+			//		MessageBox::Show("You have a low remaining balance for Groceries", "Low Balance Alert", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			//	}
+			//}
+			//else {
+			//	grocBalance->Text = "N/A";
+			//}
+
+
+
+
+
+			////////////////////// SUPPLIES BUDGET LABEL ////////////////////////////////
+			//String^ supSqlQuery = "SELECT amount FROM budget WHERE username = @username AND category = 'Supplies'";
+			//SqlCommand supCommand(supSqlQuery, % sqlConn);
+			//supCommand.Parameters->AddWithValue("@username", username);
+
+			//Object^ supResult = supCommand.ExecuteScalar();
+
+			//if (supResult != nullptr) {
+			//	supBudget->Text = supResult->ToString();
+			//}
+			//else {
+			//	supBudget->Text = "No budget set for Supplies";
+			//}
+
+			////////////////////// SUPPLIES SPENT LABEL ////////////////////////////////
+
+			//String^ supExpenseQuery = "SELECT SUM(expense) FROM expense WHERE username = @username AND expensetype = 'Supplies'";
+			//SqlCommand supExpenseCommand(supExpenseQuery, % sqlConn);
+			//supExpenseCommand.Parameters->AddWithValue("@username", username);
+
+			//Object^ supExpenseResult = supExpenseCommand.ExecuteScalar();
+
+			//if (supExpenseResult != nullptr && supExpenseResult->ToString() != "") {
+			//	supSpent->Text = supExpenseResult->ToString();
+			//}
+			//else {
+			//	supSpent->Text = "No expenses for Supplies";
+			//}
+
+			////////////////////// SUPPLIES CALCULATION ////////////////////////////////
+
+			//if (supBudget->Text != "No budget set for Supplies" && supSpent->Text != "No expenses for Supplies") {
+			//	float supBudgetAmount = Convert::ToSingle(supBudget->Text);
+			//	float supSpentAmount = Convert::ToSingle(supSpent->Text);
+
+			//	float supBalanceAmount = supBudgetAmount - supSpentAmount;
+
+			//	supBalance->Text = supBalanceAmount.ToString("F2");
+
+			//	if (supBalanceAmount < 500) {
+			//		MessageBox::Show("You have a low remaining balance for Supplies", "Low Balance Alert", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			//	}
+			//}
+			//else {
+			//	supBalance->Text = "N/A";
+			//}
+
+
+
+
+
+
+			////////////////////// ENTERTAINMENT BUDGET LABEL ////////////////////////////////
+			//String^ entSqlQuery = "SELECT amount FROM budget WHERE username = @username AND category = 'Entertainment'";
+			//SqlCommand entCommand(entSqlQuery, % sqlConn);
+			//entCommand.Parameters->AddWithValue("@username", username);
+
+			//Object^ entResult = entCommand.ExecuteScalar();
+
+			//if (entResult != nullptr) {
+			//	entBudget->Text = entResult->ToString();
+			//}
+			//else {
+			//	entBudget->Text = "No budget set for Entertainment";
+			//}
+
+			////////////////////// ENTERTAINMENT SPENT LABEL ////////////////////////////////
+
+			//String^ entExpenseQuery = "SELECT SUM(expense) FROM expense WHERE username = @username AND expensetype = 'Entertainment'";
+			//SqlCommand entExpenseCommand(entExpenseQuery, % sqlConn);
+			//entExpenseCommand.Parameters->AddWithValue("@username", username);
+
+			//Object^ entExpenseResult = entExpenseCommand.ExecuteScalar();
+
+			//if (entExpenseResult != nullptr && entExpenseResult->ToString() != "") {
+			//	entSpent->Text = entExpenseResult->ToString();
+			//}
+			//else {
+			//	entSpent->Text = "No expenses for Entertainment";
+			//}
+
+			////////////////////// ENTERTAINMENT CALCULATION ////////////////////////////////
+
+			//if (entBudget->Text != "No budget set for Entertainment" && entSpent->Text != "No expenses for Entertainment") {
+			//	float entBudgetAmount = Convert::ToSingle(entBudget->Text);
+			//	float entSpentAmount = Convert::ToSingle(entSpent->Text);
+
+			//	float entBalanceAmount = entBudgetAmount - entSpentAmount;
+
+			//	entBalance->Text = entBalanceAmount.ToString("F2");
+
+			//	if (entBalanceAmount < 500) {
+			//		MessageBox::Show("You have a low remaining balance for Entertainment", "Low Balance Alert", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			//	}
+			//}
+			//else {
+			//	entBalance->Text = "N/A";
+			//}
+
+
+
+
+
+
+
+			////////////////////// CLOTHES BUDGET LABEL ////////////////////////////////
+			//String^ cloSqlQuery = "SELECT amount FROM budget WHERE username = @username AND category = 'Clothes'";
+			//SqlCommand cloCommand(cloSqlQuery, % sqlConn);
+			//cloCommand.Parameters->AddWithValue("@username", username);
+
+			//Object^ cloResult = cloCommand.ExecuteScalar();
+
+			//if (cloResult != nullptr) {
+			//	cloBudget->Text = cloResult->ToString();
+			//}
+			//else {
+			//	cloBudget->Text = "No budget set for Clothes";
+			//}
+
+			////////////////////// CLOTHES SPENT LABEL ////////////////////////////////
+
+			//String^ cloExpenseQuery = "SELECT SUM(expense) FROM expense WHERE username = @username AND expensetype = 'Clothes'";
+			//SqlCommand cloExpenseCommand(cloExpenseQuery, % sqlConn);
+			//cloExpenseCommand.Parameters->AddWithValue("@username", username);
+
+			//Object^ cloExpenseResult = cloExpenseCommand.ExecuteScalar();
+
+			//if (cloExpenseResult != nullptr && cloExpenseResult->ToString() != "") {
+			//	cloSpent->Text = cloExpenseResult->ToString();
+			//}
+			//else {
+			//	cloSpent->Text = "No expenses for Clothes";
+			//}
+
+			////////////////////// CLOTHES CALCULATION ////////////////////////////////
+
+			//if (cloBudget->Text != "No budget set for Clothes" && cloSpent->Text != "No expenses for Clothes") {
+			//	float cloBudgetAmount = Convert::ToSingle(cloBudget->Text);
+			//	float cloSpentAmount = Convert::ToSingle(cloSpent->Text);
+
+			//	float cloBalanceAmount = cloBudgetAmount - cloSpentAmount;
+
+			//	cloBalance->Text = cloBalanceAmount.ToString("F2");
+
+			//	if (cloBalanceAmount < 500) {
+			//		MessageBox::Show("You have a low remaining balance for Clothes", "Low Balance Alert", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			//	}
+			//}
+			//else {
+			//	cloBalance->Text = "N/A";
+			//}
+
+
+
+
+
+
+			////////////////////// OTHER BUDGET LABEL ////////////////////////////////
+			//String^ otSqlQuery = "SELECT amount FROM budget WHERE username = @username AND category = 'Other'";
+			//SqlCommand otCommand(otSqlQuery, % sqlConn);
+			//otCommand.Parameters->AddWithValue("@username", username);
+
+			//Object^ otResult = otCommand.ExecuteScalar();
+
+			//if (otResult != nullptr) {
+			//	otBudget->Text = otResult->ToString();
+			//}
+			//else {
+			//	otBudget->Text = "No budget set for Other";
+			//}
+
+			////////////////////// OTHER SPENT LABEL ////////////////////////////////
+
+			//String^ otExpenseQuery = "SELECT SUM(expense) FROM expense WHERE username = @username AND expensetype = 'Other'";
+			//SqlCommand otExpenseCommand(otExpenseQuery, % sqlConn);
+			//otExpenseCommand.Parameters->AddWithValue("@username", username);
+
+			//Object^ otExpenseResult = otExpenseCommand.ExecuteScalar();
+
+			//if (otExpenseResult != nullptr && otExpenseResult->ToString() != "") {
+			//	otSpent->Text = otExpenseResult->ToString();
+			//}
+			//else {
+			//	otSpent->Text = "No expenses for Other";
+			//}
+
+			////////////////////// OTHER CALCULATION ////////////////////////////////
+
+			//if (otBudget->Text != "No budget set for Other" && otSpent->Text != "No expenses for Other") {
+			//	float otBudgetAmount = Convert::ToSingle(otBudget->Text);
+			//	float otSpentAmount = Convert::ToSingle(otSpent->Text);
+
+			//	float otBalanceAmount = otBudgetAmount - otSpentAmount;
+
+			//	otBalance->Text = otBalanceAmount.ToString("F2");
+
+			//	if (otBalanceAmount < 500) {
+			//		MessageBox::Show("You have a low remaining balance for Other", "Low Balance Alert", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			//	}
+			//}
+			//else {
+			//	otBalance->Text = "N/A";
+			//}
+
+
+			sqlConn.Close();
+		}
+		catch (Exception^ ex) {
+			MessageBox::Show("An error occurred: " + ex->Message, "Error", MessageBoxButtons::OK);
+		}
+	}
 	public:
 
 		BudgetForm(String^ loggedInUsername) {
 			InitializeComponent();
 			name = loggedInUsername;
+
+			if (name != nullptr) {
+				lbUserInfo->Text = "Hi, " + name + ", please set your budget";
+				DisplayTransportationBudget();  // Call to display transportation budget
+			}
+			else {
+				lbUserInfo->Text = "Username not found";
+			}
+
+			this->CenterToScreen();
 		}
 		//BudgetForm(void)
 		//{
@@ -67,6 +461,15 @@ namespace personalOrganizer {
 	private: System::Windows::Forms::Label^ label11;
 	private: System::Windows::Forms::Label^ label12;
 	private: System::Windows::Forms::Label^ label13;
+private: System::Windows::Forms::Label^ foodbudget;
+
+private: System::Windows::Forms::Label^ lbUserInfo;
+private: System::Windows::Forms::Label^ foodspent;
+private: System::Windows::Forms::Label^ foodremain;
+
+
+
+
 
 
 
@@ -103,8 +506,12 @@ namespace personalOrganizer {
 			this->label11 = (gcnew System::Windows::Forms::Label());
 			this->label12 = (gcnew System::Windows::Forms::Label());
 			this->label13 = (gcnew System::Windows::Forms::Label());
+			this->foodbudget = (gcnew System::Windows::Forms::Label());
+			this->foodspent = (gcnew System::Windows::Forms::Label());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->lbUserInfo = (gcnew System::Windows::Forms::Label());
+			this->foodremain = (gcnew System::Windows::Forms::Label());
 			this->tableLayoutPanel1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -118,6 +525,7 @@ namespace personalOrganizer {
 			this->button1->TabIndex = 0;
 			this->button1->Text = L"Refresh";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &BudgetForm::button1_Click);
 			// 
 			// button2
 			// 
@@ -187,7 +595,7 @@ namespace personalOrganizer {
 			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Absolute,
 				189)));
 			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Absolute,
-				184)));
+				194)));
 			this->tableLayoutPanel1->Controls->Add(this->label3, 1, 0);
 			this->tableLayoutPanel1->Controls->Add(this->label6, 2, 0);
 			this->tableLayoutPanel1->Controls->Add(this->label7, 3, 0);
@@ -198,6 +606,9 @@ namespace personalOrganizer {
 			this->tableLayoutPanel1->Controls->Add(this->label11, 0, 4);
 			this->tableLayoutPanel1->Controls->Add(this->label12, 0, 5);
 			this->tableLayoutPanel1->Controls->Add(this->label13, 0, 6);
+			this->tableLayoutPanel1->Controls->Add(this->foodbudget, 1, 1);
+			this->tableLayoutPanel1->Controls->Add(this->foodspent, 2, 1);
+			this->tableLayoutPanel1->Controls->Add(this->foodremain, 3, 1);
 			this->tableLayoutPanel1->Location = System::Drawing::Point(28, 178);
 			this->tableLayoutPanel1->Name = L"tableLayoutPanel1";
 			this->tableLayoutPanel1->RowCount = 7;
@@ -217,9 +628,9 @@ namespace personalOrganizer {
 			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label3->ForeColor = System::Drawing::Color::Blue;
-			this->label3->Location = System::Drawing::Point(261, 1);
+			this->label3->Location = System::Drawing::Point(255, 1);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(182, 60);
+			this->label3->Size = System::Drawing::Size(178, 60);
 			this->label3->TabIndex = 0;
 			this->label3->Text = L"Budget";
 			this->label3->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -229,7 +640,7 @@ namespace personalOrganizer {
 			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label6->ForeColor = System::Drawing::Color::Blue;
-			this->label6->Location = System::Drawing::Point(450, 1);
+			this->label6->Location = System::Drawing::Point(440, 1);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(183, 60);
 			this->label6->TabIndex = 0;
@@ -241,7 +652,7 @@ namespace personalOrganizer {
 			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label7->ForeColor = System::Drawing::Color::Blue;
-			this->label7->Location = System::Drawing::Point(640, 1);
+			this->label7->Location = System::Drawing::Point(630, 1);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(177, 60);
 			this->label7->TabIndex = 0;
@@ -266,7 +677,7 @@ namespace personalOrganizer {
 				static_cast<System::Byte>(0)));
 			this->label8->Location = System::Drawing::Point(4, 62);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(250, 48);
+			this->label8->Size = System::Drawing::Size(244, 48);
 			this->label8->TabIndex = 1;
 			this->label8->Text = L"FOOD";
 			this->label8->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -278,7 +689,7 @@ namespace personalOrganizer {
 				static_cast<System::Byte>(0)));
 			this->label9->Location = System::Drawing::Point(4, 111);
 			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(250, 48);
+			this->label9->Size = System::Drawing::Size(244, 48);
 			this->label9->TabIndex = 1;
 			this->label9->Text = L"ENTERTAINMENT";
 			this->label9->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -290,7 +701,7 @@ namespace personalOrganizer {
 				static_cast<System::Byte>(0)));
 			this->label10->Location = System::Drawing::Point(4, 161);
 			this->label10->Name = L"label10";
-			this->label10->Size = System::Drawing::Size(250, 48);
+			this->label10->Size = System::Drawing::Size(244, 48);
 			this->label10->TabIndex = 1;
 			this->label10->Text = L"TRAVELLING";
 			this->label10->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -302,7 +713,7 @@ namespace personalOrganizer {
 				static_cast<System::Byte>(0)));
 			this->label11->Location = System::Drawing::Point(4, 213);
 			this->label11->Name = L"label11";
-			this->label11->Size = System::Drawing::Size(250, 48);
+			this->label11->Size = System::Drawing::Size(244, 48);
 			this->label11->TabIndex = 1;
 			this->label11->Text = L"CLOTHING";
 			this->label11->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -314,7 +725,7 @@ namespace personalOrganizer {
 				static_cast<System::Byte>(0)));
 			this->label12->Location = System::Drawing::Point(4, 265);
 			this->label12->Name = L"label12";
-			this->label12->Size = System::Drawing::Size(250, 48);
+			this->label12->Size = System::Drawing::Size(244, 48);
 			this->label12->TabIndex = 1;
 			this->label12->Text = L"EDUCATION EQUIPMENT\r\n";
 			this->label12->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -326,11 +737,33 @@ namespace personalOrganizer {
 				static_cast<System::Byte>(0)));
 			this->label13->Location = System::Drawing::Point(4, 315);
 			this->label13->Name = L"label13";
-			this->label13->Size = System::Drawing::Size(250, 48);
+			this->label13->Size = System::Drawing::Size(244, 48);
 			this->label13->TabIndex = 1;
 			this->label13->Text = L"UNIVERSITY FEES\r\n";
 			this->label13->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			this->label13->Click += gcnew System::EventHandler(this, &BudgetForm::label8_Click);
+			// 
+			// foodbudget
+			// 
+			this->foodbudget->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->foodbudget->Location = System::Drawing::Point(255, 62);
+			this->foodbudget->Name = L"foodbudget";
+			this->foodbudget->Size = System::Drawing::Size(178, 48);
+			this->foodbudget->TabIndex = 1;
+			this->foodbudget->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->foodbudget->Click += gcnew System::EventHandler(this, &BudgetForm::label8_Click);
+			// 
+			// foodspent
+			// 
+			this->foodspent->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->foodspent->Location = System::Drawing::Point(440, 62);
+			this->foodspent->Name = L"foodspent";
+			this->foodspent->Size = System::Drawing::Size(183, 48);
+			this->foodspent->TabIndex = 1;
+			this->foodspent->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->foodspent->Click += gcnew System::EventHandler(this, &BudgetForm::label8_Click);
 			// 
 			// button3
 			// 
@@ -355,11 +788,34 @@ namespace personalOrganizer {
 			this->label1->Text = L"Budget Your Expenses";
 			this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
+			// lbUserInfo
+			// 
+			this->lbUserInfo->AutoSize = true;
+			this->lbUserInfo->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->lbUserInfo->Location = System::Drawing::Point(345, 147);
+			this->lbUserInfo->Name = L"lbUserInfo";
+			this->lbUserInfo->Size = System::Drawing::Size(28, 20);
+			this->lbUserInfo->TabIndex = 24;
+			this->lbUserInfo->Text = L"Hi";
+			// 
+			// foodremain
+			// 
+			this->foodremain->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->foodremain->Location = System::Drawing::Point(630, 62);
+			this->foodremain->Name = L"foodremain";
+			this->foodremain->Size = System::Drawing::Size(189, 48);
+			this->foodremain->TabIndex = 1;
+			this->foodremain->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->foodremain->Click += gcnew System::EventHandler(this, &BudgetForm::label8_Click);
+			// 
 			// BudgetForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(880, 633);
+			this->Controls->Add(this->lbUserInfo);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->tableLayoutPanel1);
 			this->Controls->Add(this->label4);
@@ -416,7 +872,7 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 		command.ExecuteNonQuery();
 
 		MessageBox::Show("Budget record updated successfully!", "Success", MessageBoxButtons::OK);
-		this->Close(); 
+		//this->Close(); 
 	}
 	catch (Exception^ ex) {
 		MessageBox::Show("Failed to update budget. Error: " + ex->Message, "Budget Failure", MessageBoxButtons::OK);
@@ -432,6 +888,9 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 	this->Close();
 }
 private: System::Void label8_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	DisplayTransportationBudget();
 }
 };
 }
