@@ -137,214 +137,53 @@ namespace personalOrganizer {
 				}
 
 
-
-
-			////////////////////// GROCERIES BUDGET LABEL ////////////////////////////////
-			//String^ grocSqlQuery = "SELECT amount FROM budget WHERE username = @username AND category = 'Groceries'";
-			//SqlCommand grocCommand(grocSqlQuery, % sqlConn);
-			//grocCommand.Parameters->AddWithValue("@username", username);
-
-			//Object^ grocResult = grocCommand.ExecuteScalar();
-
-			//if (grocResult != nullptr) {
-			//	grocBudget->Text = grocResult->ToString();
-			//}
-			//else {
-			//	grocBudget->Text = "No budget set for Groceries";
-			//}
-
-			////////////////////// GROCERIES SPENT LABEL ////////////////////////////////
-
-			//String^ grocExpenseQuery = "SELECT SUM(expense) FROM expense WHERE username = @username AND expensetype = 'Groceries'";
-			//SqlCommand grocExpenseCommand(grocExpenseQuery, % sqlConn);
-			//grocExpenseCommand.Parameters->AddWithValue("@username", username);
-
-			//Object^ grocExpenseResult = grocExpenseCommand.ExecuteScalar();
-
-			//if (grocExpenseResult != nullptr && grocExpenseResult->ToString() != "") {
-			//	grocSpent->Text = grocExpenseResult->ToString();
-			//}
-			//else {
-			//	grocSpent->Text = "No expenses for Groceries";
-			//}
-
-			////////////////////// GROCERIES CALCULATION ////////////////////////////////
-
-			//if (grocBudget->Text != "No budget set for Groceries" && grocSpent->Text != "No expenses for Groceries") {
-			//	float grocBudgetAmount = Convert::ToSingle(grocBudget->Text);
-			//	float grocSpentAmount = Convert::ToSingle(grocSpent->Text);
-
-			//	float grocBalanceAmount = grocBudgetAmount - grocSpentAmount;
-
-			//	grocBalance->Text = grocBalanceAmount.ToString("F2");
-
-			//	if (grocBalanceAmount < 500) {
-			//		MessageBox::Show("You have a low remaining balance for Groceries", "Low Balance Alert", MessageBoxButtons::OK, MessageBoxIcon::Warning);
-			//	}
-			//}
-			//else {
-			//	grocBalance->Text = "N/A";
-			//}
-
-
-
-
-
-			////////////////////// SUPPLIES BUDGET LABEL ////////////////////////////////
-			//String^ supSqlQuery = "SELECT amount FROM budget WHERE username = @username AND category = 'Supplies'";
-			//SqlCommand supCommand(supSqlQuery, % sqlConn);
-			//supCommand.Parameters->AddWithValue("@username", username);
-
-			//Object^ supResult = supCommand.ExecuteScalar();
-
-			//if (supResult != nullptr) {
-			//	supBudget->Text = supResult->ToString();
-			//}
-			//else {
-			//	supBudget->Text = "No budget set for Supplies";
-			//}
-
-			////////////////////// SUPPLIES SPENT LABEL ////////////////////////////////
-
-			//String^ supExpenseQuery = "SELECT SUM(expense) FROM expense WHERE username = @username AND expensetype = 'Supplies'";
-			//SqlCommand supExpenseCommand(supExpenseQuery, % sqlConn);
-			//supExpenseCommand.Parameters->AddWithValue("@username", username);
-
-			//Object^ supExpenseResult = supExpenseCommand.ExecuteScalar();
-
-			//if (supExpenseResult != nullptr && supExpenseResult->ToString() != "") {
-			//	supSpent->Text = supExpenseResult->ToString();
-			//}
-			//else {
-			//	supSpent->Text = "No expenses for Supplies";
-			//}
-
-			////////////////////// SUPPLIES CALCULATION ////////////////////////////////
-
-			//if (supBudget->Text != "No budget set for Supplies" && supSpent->Text != "No expenses for Supplies") {
-			//	float supBudgetAmount = Convert::ToSingle(supBudget->Text);
-			//	float supSpentAmount = Convert::ToSingle(supSpent->Text);
-
-			//	float supBalanceAmount = supBudgetAmount - supSpentAmount;
-
-			//	supBalance->Text = supBalanceAmount.ToString("F2");
-
-			//	if (supBalanceAmount < 500) {
-			//		MessageBox::Show("You have a low remaining balance for Supplies", "Low Balance Alert", MessageBoxButtons::OK, MessageBoxIcon::Warning);
-			//	}
-			//}
-			//else {
-			//	supBalance->Text = "N/A";
-			//}
-
-
-
-
-
-
-			////////////////////// ENTERTAINMENT BUDGET LABEL ////////////////////////////////
-			//String^ entSqlQuery = "SELECT amount FROM budget WHERE username = @username AND category = 'Entertainment'";
-			//SqlCommand entCommand(entSqlQuery, % sqlConn);
-			//entCommand.Parameters->AddWithValue("@username", username);
-
-			//Object^ entResult = entCommand.ExecuteScalar();
-
-			//if (entResult != nullptr) {
-			//	entBudget->Text = entResult->ToString();
-			//}
-			//else {
-			//	entBudget->Text = "No budget set for Entertainment";
-			//}
-
-			////////////////////// ENTERTAINMENT SPENT LABEL ////////////////////////////////
-
-			//String^ entExpenseQuery = "SELECT SUM(expense) FROM expense WHERE username = @username AND expensetype = 'Entertainment'";
-			//SqlCommand entExpenseCommand(entExpenseQuery, % sqlConn);
-			//entExpenseCommand.Parameters->AddWithValue("@username", username);
-
-			//Object^ entExpenseResult = entExpenseCommand.ExecuteScalar();
-
-			//if (entExpenseResult != nullptr && entExpenseResult->ToString() != "") {
-			//	entSpent->Text = entExpenseResult->ToString();
-			//}
-			//else {
-			//	entSpent->Text = "No expenses for Entertainment";
-			//}
-
-			////////////////////// ENTERTAINMENT CALCULATION ////////////////////////////////
-
-			//if (entBudget->Text != "No budget set for Entertainment" && entSpent->Text != "No expenses for Entertainment") {
-			//	float entBudgetAmount = Convert::ToSingle(entBudget->Text);
-			//	float entSpentAmount = Convert::ToSingle(entSpent->Text);
-
-			//	float entBalanceAmount = entBudgetAmount - entSpentAmount;
-
-			//	entBalance->Text = entBalanceAmount.ToString("F2");
-
-			//	if (entBalanceAmount < 500) {
-			//		MessageBox::Show("You have a low remaining balance for Entertainment", "Low Balance Alert", MessageBoxButtons::OK, MessageBoxIcon::Warning);
-			//	}
-			//}
-			//else {
-			//	entBalance->Text = "N/A";
-			//}
-
-
-
-
-
-
-
 			////////////////////// CLOTHES BUDGET LABEL ////////////////////////////////
-			//String^ cloSqlQuery = "SELECT amount FROM budget WHERE username = @username AND category = 'Clothes'";
-			//SqlCommand cloCommand(cloSqlQuery, % sqlConn);
-			//cloCommand.Parameters->AddWithValue("@username", username);
+			
+			String^ cloSqlQuery = "SELECT budgetAmount FROM budget WHERE name = @name AND budgetSource = 'Clothing'";
+			SqlCommand cloCommand(cloSqlQuery, % sqlConn);
+			cloCommand.Parameters->AddWithValue("@name", name);
 
-			//Object^ cloResult = cloCommand.ExecuteScalar();
+			Object^ cloResult = cloCommand.ExecuteScalar();
 
-			//if (cloResult != nullptr) {
-			//	cloBudget->Text = cloResult->ToString();
-			//}
-			//else {
-			//	cloBudget->Text = "No budget set for Clothes";
-			//}
+			if (cloResult != nullptr) {
+				clothbudget->Text = cloResult->ToString();
+			}
+			else {
+				clothbudget->Text = "No budget set for Clothes";
+			}
 
 			////////////////////// CLOTHES SPENT LABEL ////////////////////////////////
 
-			//String^ cloExpenseQuery = "SELECT SUM(expense) FROM expense WHERE username = @username AND expensetype = 'Clothes'";
-			//SqlCommand cloExpenseCommand(cloExpenseQuery, % sqlConn);
-			//cloExpenseCommand.Parameters->AddWithValue("@username", username);
+			String^ cloExpenseQuery = "SELECT SUM(expenseamount) FROM expense WHERE name = @name AND expensesource = 'Clothing'";
+			SqlCommand cloExpenseCommand(cloExpenseQuery, % sqlConn);
+			cloExpenseCommand.Parameters->AddWithValue("@name", name);
 
-			//Object^ cloExpenseResult = cloExpenseCommand.ExecuteScalar();
+			Object^ cloExpenseResult = cloExpenseCommand.ExecuteScalar();
 
-			//if (cloExpenseResult != nullptr && cloExpenseResult->ToString() != "") {
-			//	cloSpent->Text = cloExpenseResult->ToString();
-			//}
-			//else {
-			//	cloSpent->Text = "No expenses for Clothes";
-			//}
+			if (cloExpenseResult != nullptr && cloExpenseResult->ToString() != "") {
+				clothspent->Text = cloExpenseResult->ToString();
+			}
+			else {
+				clothspent->Text = "No expenses for Clothes";
+			}
 
 			////////////////////// CLOTHES CALCULATION ////////////////////////////////
 
-			//if (cloBudget->Text != "No budget set for Clothes" && cloSpent->Text != "No expenses for Clothes") {
-			//	float cloBudgetAmount = Convert::ToSingle(cloBudget->Text);
-			//	float cloSpentAmount = Convert::ToSingle(cloSpent->Text);
+			if (clothbudget->Text != "No budget set for Clothes" && clothspent->Text != "No expenses for Clothes") {
+				float cloBudgetAmount = Convert::ToSingle(clothbudget->Text);
+				float cloSpentAmount = Convert::ToSingle(clothspent->Text);
 
-			//	float cloBalanceAmount = cloBudgetAmount - cloSpentAmount;
+				float cloBalanceAmount = cloBudgetAmount - cloSpentAmount;
 
-			//	cloBalance->Text = cloBalanceAmount.ToString("F2");
+				clothremain->Text = cloBalanceAmount.ToString("F2");
 
-			//	if (cloBalanceAmount < 500) {
-			//		MessageBox::Show("You have a low remaining balance for Clothes", "Low Balance Alert", MessageBoxButtons::OK, MessageBoxIcon::Warning);
-			//	}
-			//}
-			//else {
-			//	cloBalance->Text = "N/A";
-			//}
-
-
-
-
+				if (cloBalanceAmount < 500) {
+					MessageBox::Show("You have a low remaining balance for Clothes", "Low Balance Alert", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				}
+			}
+			else {
+				clothremain->Text = "N/A";
+			}
 
 
 			////////////////////// OTHER BUDGET LABEL ////////////////////////////////
