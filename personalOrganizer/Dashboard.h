@@ -213,7 +213,7 @@ private: System::Void llexpenses_LinkClicked(System::Object^ sender, System::Win
 private: System::Void Dashboard_Load(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void llbudget_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
-	BudgetForm^ budgetform = gcnew BudgetForm();
+	BudgetForm^ budgetform = gcnew BudgetForm(loggedInUsername);
 	budgetform->ShowDialog();
 }
 };
