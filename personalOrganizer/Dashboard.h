@@ -3,6 +3,7 @@
 #include"Income.h"
 #include"ExpensesForm.h"
 #include"BudgetForm.h"
+#include"AcademicForm.h"
 
 namespace personalOrganizer {
 
@@ -108,6 +109,7 @@ namespace personalOrganizer {
 			this->llacademic->TabIndex = 1;
 			this->llacademic->TabStop = true;
 			this->llacademic->Text = L"Academic \r\nSchedule\r\n";
+			this->llacademic->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &Dashboard::llacademic_LinkClicked);
 			// 
 			// llreports
 			// 
@@ -215,6 +217,10 @@ private: System::Void Dashboard_Load(System::Object^ sender, System::EventArgs^ 
 private: System::Void llbudget_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
 	BudgetForm^ budgetform = gcnew BudgetForm(loggedInUsername);
 	budgetform->ShowDialog();
+}
+private: System::Void llacademic_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
+	AcademicForm^ academicform = gcnew AcademicForm();
+	academicform->ShowDialog();
 }
 };
 }
