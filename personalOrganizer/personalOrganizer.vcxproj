@@ -122,6 +122,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AcademicForm.cpp" />
     <ClCompile Include="BudgetForm.cpp" />
     <ClCompile Include="Dashboard.cpp" />
     <ClCompile Include="ExpensesForm.cpp" />
@@ -131,6 +132,9 @@
     <ClCompile Include="RegisterForm.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AcademicForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="BudgetForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -152,6 +156,9 @@
     <ClInclude Include="User.h" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AcademicForm.resx">
+      <DependentUpon>AcademicForm.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BudgetForm.resx">
       <DependentUpon>BudgetForm.h</DependentUpon>
     </EmbeddedResource>
