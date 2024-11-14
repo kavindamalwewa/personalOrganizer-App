@@ -123,6 +123,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AcademicForm.cpp" />
+    <ClCompile Include="AssignmentForm.cpp" />
     <ClCompile Include="BudgetForm.cpp" />
     <ClCompile Include="Dashboard.cpp" />
     <ClCompile Include="ExpensesForm.cpp" />
@@ -133,6 +134,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AcademicForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="AssignmentForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="BudgetForm.h">

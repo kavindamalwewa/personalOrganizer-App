@@ -237,7 +237,7 @@ namespace personalOrganizer {
 			this->linkLabel1->AutoSize = true;
 			this->linkLabel1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->linkLabel1->Location = System::Drawing::Point(438, 617);
+			this->linkLabel1->Location = System::Drawing::Point(421, 617);
 			this->linkLabel1->Name = L"linkLabel1";
 			this->linkLabel1->Size = System::Drawing::Size(112, 25);
 			this->linkLabel1->TabIndex = 32;
