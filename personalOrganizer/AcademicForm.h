@@ -1,4 +1,5 @@
 #pragma once
+#include"AssignmentForm.h"
 
 namespace personalOrganizer {
 
@@ -48,8 +49,9 @@ namespace personalOrganizer {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
 	private: System::Windows::Forms::Label^ label5;
-	private: System::Windows::Forms::LinkLabel^ linkLabel1;
+
 	private: System::Windows::Forms::Button^ button2;
+	private: System::Windows::Forms::Button^ button4;
 
 
 
@@ -88,8 +90,8 @@ namespace personalOrganizer {
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->label5 = (gcnew System::Windows::Forms::Label());
-			this->linkLabel1 = (gcnew System::Windows::Forms::LinkLabel());
 			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->button4 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -232,24 +234,12 @@ namespace personalOrganizer {
 			this->label5->TabIndex = 31;
 			this->label5->Text = L"Is there Any Assignment here\?";
 			// 
-			// linkLabel1
-			// 
-			this->linkLabel1->AutoSize = true;
-			this->linkLabel1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->linkLabel1->Location = System::Drawing::Point(421, 617);
-			this->linkLabel1->Name = L"linkLabel1";
-			this->linkLabel1->Size = System::Drawing::Size(112, 25);
-			this->linkLabel1->TabIndex = 32;
-			this->linkLabel1->TabStop = true;
-			this->linkLabel1->Text = L"Click Here";
-			// 
 			// button2
 			// 
 			this->button2->BackColor = System::Drawing::Color::Crimson;
-			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button2->Location = System::Drawing::Point(641, 605);
+			this->button2->Location = System::Drawing::Point(638, 611);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(150, 37);
 			this->button2->TabIndex = 29;
@@ -257,12 +247,25 @@ namespace personalOrganizer {
 			this->button2->UseVisualStyleBackColor = false;
 			this->button2->Click += gcnew System::EventHandler(this, &AcademicForm::button2_Click);
 			// 
+			// button4
+			// 
+			this->button4->BackColor = System::Drawing::Color::SteelBlue;
+			this->button4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button4->Location = System::Drawing::Point(437, 611);
+			this->button4->Name = L"button4";
+			this->button4->Size = System::Drawing::Size(150, 37);
+			this->button4->TabIndex = 37;
+			this->button4->Text = L"Next";
+			this->button4->UseVisualStyleBackColor = false;
+			this->button4->Click += gcnew System::EventHandler(this, &AcademicForm::button4_Click);
+			// 
 			// AcademicForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(820, 697);
-			this->Controls->Add(this->linkLabel1);
+			this->Controls->Add(this->button4);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->button3);
@@ -289,6 +292,14 @@ namespace personalOrganizer {
 
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Close();
+}
+
+private: System::Void linkLabel1_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
+	
+}
+private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+	AssignmentForm^ assignmentform = gcnew AssignmentForm();
+	assignmentform->ShowDialog();
 }
 };
 }

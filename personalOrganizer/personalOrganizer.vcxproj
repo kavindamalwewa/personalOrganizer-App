@@ -163,6 +163,9 @@
     <EmbeddedResource Include="AcademicForm.resx">
       <DependentUpon>AcademicForm.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AssignmentForm.resx">
+      <DependentUpon>AssignmentForm.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BudgetForm.resx">
       <DependentUpon>BudgetForm.h</DependentUpon>
     </EmbeddedResource>
