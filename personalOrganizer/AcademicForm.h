@@ -41,17 +41,25 @@ namespace personalOrganizer {
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::DateTimePicker^ dateTimePicker1;
 	private: System::Windows::Forms::Label^ label4;
-	private: System::Windows::Forms::ComboBox^ comboBox1;
+
 	private: System::Windows::Forms::Button^ button3;
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
+
+
+
 	private: System::Windows::Forms::Label^ label5;
 
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::Button^ button4;
+	private: System::Windows::Forms::DateTimePicker^ dateTimePicker2;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
+	private: System::Windows::Forms::Label^ label6;
+	private: System::Windows::Forms::DateTimePicker^ dateTimePicker3;
+
 
 
 
@@ -82,16 +90,19 @@ namespace personalOrganizer {
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->dateTimePicker1 = (gcnew System::Windows::Forms::DateTimePicker());
 			this->label4 = (gcnew System::Windows::Forms::Label());
-			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button4 = (gcnew System::Windows::Forms::Button());
+			this->dateTimePicker2 = (gcnew System::Windows::Forms::DateTimePicker());
+			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->dateTimePicker3 = (gcnew System::Windows::Forms::DateTimePicker());
+			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -155,18 +166,9 @@ namespace personalOrganizer {
 				static_cast<System::Byte>(0)));
 			this->label4->Location = System::Drawing::Point(422, 135);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(146, 20);
+			this->label4->Size = System::Drawing::Size(106, 20);
 			this->label4->TabIndex = 26;
-			this->label4->Text = L"Time Duration : ";
-			// 
-			// comboBox1
-			// 
-			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"1 Hour", L"2 Hour", L"3 Hour", L"4 Hour" });
-			this->comboBox1->Location = System::Drawing::Point(588, 131);
-			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(165, 24);
-			this->comboBox1->TabIndex = 25;
+			this->label4->Text = L"End Time : ";
 			// 
 			// button3
 			// 
@@ -194,9 +196,9 @@ namespace personalOrganizer {
 			// 
 			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
 				this->Column1,
-					this->Column2, this->Column3
+					this->Column2, this->Column3, this->Column4
 			});
 			this->dataGridView1->Location = System::Drawing::Point(106, 263);
 			this->dataGridView1->Name = L"dataGridView1";
@@ -204,24 +206,6 @@ namespace personalOrganizer {
 			this->dataGridView1->RowTemplate->Height = 24;
 			this->dataGridView1->Size = System::Drawing::Size(566, 321);
 			this->dataGridView1->TabIndex = 30;
-			// 
-			// Column1
-			// 
-			this->Column1->HeaderText = L"Subject";
-			this->Column1->MinimumWidth = 6;
-			this->Column1->Name = L"Column1";
-			// 
-			// Column2
-			// 
-			this->Column2->HeaderText = L"Date";
-			this->Column2->MinimumWidth = 6;
-			this->Column2->Name = L"Column2";
-			// 
-			// Column3
-			// 
-			this->Column3->HeaderText = L"Time Duration";
-			this->Column3->MinimumWidth = 6;
-			this->Column3->Name = L"Column3";
 			// 
 			// label5
 			// 
@@ -260,11 +244,69 @@ namespace personalOrganizer {
 			this->button4->UseVisualStyleBackColor = false;
 			this->button4->Click += gcnew System::EventHandler(this, &AcademicForm::button4_Click);
 			// 
+			// dateTimePicker2
+			// 
+			this->dateTimePicker2->CustomFormat = L"hh:mm tt";
+			this->dateTimePicker2->Format = System::Windows::Forms::DateTimePickerFormat::Custom;
+			this->dateTimePicker2->Location = System::Drawing::Point(588, 135);
+			this->dateTimePicker2->Name = L"dateTimePicker2";
+			this->dateTimePicker2->ShowUpDown = true;
+			this->dateTimePicker2->Size = System::Drawing::Size(164, 22);
+			this->dateTimePicker2->TabIndex = 38;
+			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label6->Location = System::Drawing::Point(422, 87);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(115, 20);
+			this->label6->TabIndex = 26;
+			this->label6->Text = L"Start Time : ";
+			// 
+			// dateTimePicker3
+			// 
+			this->dateTimePicker3->CustomFormat = L"hh:mm tt";
+			this->dateTimePicker3->DropDownAlign = System::Windows::Forms::LeftRightAlignment::Right;
+			this->dateTimePicker3->Format = System::Windows::Forms::DateTimePickerFormat::Custom;
+			this->dateTimePicker3->Location = System::Drawing::Point(588, 87);
+			this->dateTimePicker3->Name = L"dateTimePicker3";
+			this->dateTimePicker3->ShowUpDown = true;
+			this->dateTimePicker3->Size = System::Drawing::Size(164, 22);
+			this->dateTimePicker3->TabIndex = 38;
+			// 
+			// Column1
+			// 
+			this->Column1->HeaderText = L"Subject";
+			this->Column1->MinimumWidth = 6;
+			this->Column1->Name = L"Column1";
+			// 
+			// Column2
+			// 
+			this->Column2->HeaderText = L"Date";
+			this->Column2->MinimumWidth = 6;
+			this->Column2->Name = L"Column2";
+			// 
+			// Column3
+			// 
+			this->Column3->HeaderText = L"Start Time";
+			this->Column3->MinimumWidth = 6;
+			this->Column3->Name = L"Column3";
+			// 
+			// Column4
+			// 
+			this->Column4->HeaderText = L"End Time";
+			this->Column4->MinimumWidth = 6;
+			this->Column4->Name = L"Column4";
+			// 
 			// AcademicForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(820, 697);
+			this->Controls->Add(this->dateTimePicker3);
+			this->Controls->Add(this->dateTimePicker2);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->dataGridView1);
@@ -272,10 +314,10 @@ namespace personalOrganizer {
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->dateTimePicker1);
+			this->Controls->Add(this->label6);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->label2);
-			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->budgetsource);
 			this->Controls->Add(this->label1);
 			this->Name = L"AcademicForm";
