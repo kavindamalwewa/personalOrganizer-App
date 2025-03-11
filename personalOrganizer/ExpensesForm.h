@@ -60,6 +60,7 @@ namespace personalOrganizer {
 
 	private: System::Windows::Forms::ComboBox^ cbexpensesource;
 	private: System::Windows::Forms::DateTimePicker^ dtpexpensedate;
+	private: System::Windows::Forms::PictureBox^ pictureBox1;
 
 
 
@@ -90,6 +91,7 @@ namespace personalOrganizer {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(ExpensesForm::typeid));
 			this->btnexit = (gcnew System::Windows::Forms::Button());
 			this->btnaddincome = (gcnew System::Windows::Forms::Button());
 			this->label4 = (gcnew System::Windows::Forms::Label());
@@ -102,30 +104,34 @@ namespace personalOrganizer {
 			this->tbexpensedescription = (gcnew System::Windows::Forms::TextBox());
 			this->cbexpensesource = (gcnew System::Windows::Forms::ComboBox());
 			this->dtpexpensedate = (gcnew System::Windows::Forms::DateTimePicker());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// btnexit
 			// 
-			this->btnexit->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->btnexit->Location = System::Drawing::Point(559, 272);
+			this->btnexit->BackColor = System::Drawing::SystemColors::HotTrack;
+			this->btnexit->Font = (gcnew System::Drawing::Font(L"Times New Roman", 15, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->btnexit->Location = System::Drawing::Point(907, 476);
 			this->btnexit->Name = L"btnexit";
-			this->btnexit->Size = System::Drawing::Size(126, 36);
+			this->btnexit->Size = System::Drawing::Size(147, 36);
 			this->btnexit->TabIndex = 18;
 			this->btnexit->Text = L"Exit";
-			this->btnexit->UseVisualStyleBackColor = true;
+			this->btnexit->UseVisualStyleBackColor = false;
 			this->btnexit->Click += gcnew System::EventHandler(this, &ExpensesForm::btnexit_Click);
 			// 
 			// btnaddincome
 			// 
-			this->btnaddincome->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->btnaddincome->Location = System::Drawing::Point(229, 272);
+			this->btnaddincome->BackColor = System::Drawing::SystemColors::HotTrack;
+			this->btnaddincome->Font = (gcnew System::Drawing::Font(L"Times New Roman", 15, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->btnaddincome->Location = System::Drawing::Point(659, 476);
 			this->btnaddincome->Name = L"btnaddincome";
-			this->btnaddincome->Size = System::Drawing::Size(150, 36);
+			this->btnaddincome->Size = System::Drawing::Size(171, 36);
 			this->btnaddincome->TabIndex = 19;
 			this->btnaddincome->Text = L"Add Expense";
-			this->btnaddincome->UseVisualStyleBackColor = true;
+			this->btnaddincome->UseVisualStyleBackColor = false;
 			this->btnaddincome->Click += gcnew System::EventHandler(this, &ExpensesForm::btnaddincome_Click);
 			// 
 			// label4
@@ -133,7 +139,7 @@ namespace personalOrganizer {
 			this->label4->AutoSize = true;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(413, 100);
+			this->label4->Location = System::Drawing::Point(607, 245);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(84, 20);
 			this->label4->TabIndex = 13;
@@ -144,7 +150,7 @@ namespace personalOrganizer {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(28, 102);
+			this->label1->Location = System::Drawing::Point(607, 64);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(61, 20);
 			this->label1->TabIndex = 14;
@@ -155,7 +161,7 @@ namespace personalOrganizer {
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(28, 153);
+			this->label3->Location = System::Drawing::Point(607, 305);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(118, 20);
 			this->label3->TabIndex = 15;
@@ -166,7 +172,7 @@ namespace personalOrganizer {
 			this->label5->AutoSize = true;
 			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label5->Location = System::Drawing::Point(413, 50);
+			this->label5->Location = System::Drawing::Point(607, 126);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(140, 20);
 			this->label5->TabIndex = 16;
@@ -177,7 +183,7 @@ namespace personalOrganizer {
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(28, 50);
+			this->label2->Location = System::Drawing::Point(607, 184);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(157, 20);
 			this->label2->TabIndex = 17;
@@ -185,24 +191,24 @@ namespace personalOrganizer {
 			// 
 			// tbexpensename
 			// 
-			this->tbexpensename->Location = System::Drawing::Point(579, 52);
+			this->tbexpensename->Location = System::Drawing::Point(765, 124);
 			this->tbexpensename->Name = L"tbexpensename";
-			this->tbexpensename->Size = System::Drawing::Size(209, 22);
+			this->tbexpensename->Size = System::Drawing::Size(197, 22);
 			this->tbexpensename->TabIndex = 11;
 			// 
 			// tbexpenseamount
 			// 
-			this->tbexpenseamount->Location = System::Drawing::Point(559, 98);
+			this->tbexpenseamount->Location = System::Drawing::Point(765, 243);
 			this->tbexpenseamount->Name = L"tbexpenseamount";
-			this->tbexpenseamount->Size = System::Drawing::Size(229, 22);
+			this->tbexpenseamount->Size = System::Drawing::Size(197, 22);
 			this->tbexpenseamount->TabIndex = 12;
 			// 
 			// tbexpensedescription
 			// 
-			this->tbexpensedescription->Location = System::Drawing::Point(190, 141);
+			this->tbexpensedescription->Location = System::Drawing::Point(611, 338);
 			this->tbexpensedescription->Multiline = true;
 			this->tbexpensedescription->Name = L"tbexpensedescription";
-			this->tbexpensedescription->Size = System::Drawing::Size(546, 91);
+			this->tbexpensedescription->Size = System::Drawing::Size(496, 91);
 			this->tbexpensedescription->TabIndex = 10;
 			// 
 			// cbexpensesource
@@ -212,7 +218,7 @@ namespace personalOrganizer {
 				L"Food", L"Entertainment", L"Travelling",
 					L"Clothing", L"Education Equipment", L"University Fees"
 			});
-			this->cbexpensesource->Location = System::Drawing::Point(214, 50);
+			this->cbexpensesource->Location = System::Drawing::Point(797, 180);
 			this->cbexpensesource->Name = L"cbexpensesource";
 			this->cbexpensesource->Size = System::Drawing::Size(165, 24);
 			this->cbexpensesource->TabIndex = 9;
@@ -221,7 +227,7 @@ namespace personalOrganizer {
 			// 
 			this->dtpexpensedate->CalendarFont = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->dtpexpensedate->Location = System::Drawing::Point(124, 100);
+			this->dtpexpensedate->Location = System::Drawing::Point(707, 62);
 			this->dtpexpensedate->MaxDate = System::DateTime(2024, 11, 12, 0, 0, 0, 0);
 			this->dtpexpensedate->MinDate = System::DateTime(2024, 10, 12, 0, 0, 0, 0);
 			this->dtpexpensedate->Name = L"dtpexpensedate";
@@ -229,11 +235,24 @@ namespace personalOrganizer {
 			this->dtpexpensedate->TabIndex = 8;
 			this->dtpexpensedate->Value = System::DateTime(2024, 11, 12, 0, 0, 0, 0);
 			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
+			this->pictureBox1->Location = System::Drawing::Point(-1, -3);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(575, 556);
+			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox1->TabIndex = 20;
+			this->pictureBox1->TabStop = false;
+			// 
 			// ExpensesForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(825, 355);
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->ClientSize = System::Drawing::Size(1119, 552);
+			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->btnexit);
 			this->Controls->Add(this->btnaddincome);
 			this->Controls->Add(this->label4);
@@ -249,6 +268,7 @@ namespace personalOrganizer {
 			this->Name = L"ExpensesForm";
 			this->Text = L"ExpensesForm";
 			this->Load += gcnew System::EventHandler(this, &ExpensesForm::ExpensesForm_Load);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
