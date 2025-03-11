@@ -42,10 +42,11 @@ namespace personalOrganizer {
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::TextBox^ tbpassword;
 	private: System::Windows::Forms::Button^ btnok;
-	private: System::Windows::Forms::Button^ btncancel;
+
 	private: System::Windows::Forms::LinkLabel^ llregister;
 
 	private: System::Windows::Forms::Label^ label4;
+	private: System::Windows::Forms::PictureBox^ pictureBox1;
 
 
 
@@ -64,41 +65,47 @@ namespace personalOrganizer {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(LoginForm::typeid));
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->tbusername = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->tbpassword = (gcnew System::Windows::Forms::TextBox());
 			this->btnok = (gcnew System::Windows::Forms::Button());
-			this->btncancel = (gcnew System::Windows::Forms::Button());
 			this->llregister = (gcnew System::Windows::Forms::LinkLabel());
 			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// label1
 			// 
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(0, 9);
+			this->label1->Font = (gcnew System::Drawing::Font(L"Times New Roman", 22.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->label1->ForeColor = System::Drawing::Color::Black;
+			this->label1->Location = System::Drawing::Point(691, 57);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(553, 48);
 			this->label1->TabIndex = 0;
-			this->label1->Text = L"Login";
+			this->label1->Text = L"Welcome Back!";
 			this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			this->label1->Click += gcnew System::EventHandler(this, &LoginForm::label1_Click);
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(12, 96);
+			this->label2->Font = (gcnew System::Drawing::Font(L"Times New Roman", 16.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->label2->Location = System::Drawing::Point(692, 180);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(155, 32);
+			this->label2->Size = System::Drawing::Size(142, 32);
 			this->label2->TabIndex = 1;
 			this->label2->Text = L"User Name";
+			this->label2->Click += gcnew System::EventHandler(this, &LoginForm::label2_Click);
 			// 
 			// tbusername
 			// 
-			this->tbusername->Location = System::Drawing::Point(191, 93);
+			this->tbusername->Location = System::Drawing::Point(867, 174);
 			this->tbusername->Name = L"tbusername";
 			this->tbusername->Size = System::Drawing::Size(346, 38);
 			this->tbusername->TabIndex = 2;
@@ -106,16 +113,18 @@ namespace personalOrganizer {
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(12, 169);
+			this->label3->Font = (gcnew System::Drawing::Font(L"Times New Roman", 16.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->label3->Location = System::Drawing::Point(692, 259);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(138, 32);
+			this->label3->Size = System::Drawing::Size(125, 32);
 			this->label3->TabIndex = 3;
 			this->label3->Text = L"Password";
 			this->label3->Click += gcnew System::EventHandler(this, &LoginForm::label3_Click);
 			// 
 			// tbpassword
 			// 
-			this->tbpassword->Location = System::Drawing::Point(191, 166);
+			this->tbpassword->Location = System::Drawing::Point(867, 253);
 			this->tbpassword->Name = L"tbpassword";
 			this->tbpassword->PasswordChar = '*';
 			this->tbpassword->Size = System::Drawing::Size(346, 38);
@@ -123,32 +132,28 @@ namespace personalOrganizer {
 			// 
 			// btnok
 			// 
-			this->btnok->Location = System::Drawing::Point(109, 264);
+			this->btnok->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				static_cast<System::Int32>(static_cast<System::Byte>(192)));
+			this->btnok->Font = (gcnew System::Drawing::Font(L"Times New Roman", 16.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->btnok->ForeColor = System::Drawing::Color::White;
+			this->btnok->Location = System::Drawing::Point(812, 364);
 			this->btnok->Name = L"btnok";
-			this->btnok->Size = System::Drawing::Size(139, 43);
+			this->btnok->Size = System::Drawing::Size(322, 43);
 			this->btnok->TabIndex = 5;
-			this->btnok->Text = L"OK";
-			this->btnok->UseVisualStyleBackColor = true;
+			this->btnok->Text = L"Login";
+			this->btnok->UseVisualStyleBackColor = false;
 			this->btnok->Click += gcnew System::EventHandler(this, &LoginForm::button1_Click);
-			// 
-			// btncancel
-			// 
-			this->btncancel->Location = System::Drawing::Point(329, 264);
-			this->btncancel->Name = L"btncancel";
-			this->btncancel->Size = System::Drawing::Size(139, 43);
-			this->btncancel->TabIndex = 6;
-			this->btncancel->Text = L"Cancel";
-			this->btncancel->UseVisualStyleBackColor = true;
-			this->btncancel->Click += gcnew System::EventHandler(this, &LoginForm::btncancel_Click);
 			// 
 			// llregister
 			// 
 			this->llregister->AutoSize = true;
-			this->llregister->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->llregister->Location = System::Drawing::Point(324, 339);
+			this->llregister->Font = (gcnew System::Drawing::Font(L"Times New Roman", 13.8F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->llregister->LinkColor = System::Drawing::Color::Blue;
+			this->llregister->Location = System::Drawing::Point(1021, 499);
 			this->llregister->Name = L"llregister";
-			this->llregister->Size = System::Drawing::Size(104, 29);
+			this->llregister->Size = System::Drawing::Size(88, 26);
 			this->llregister->TabIndex = 7;
 			this->llregister->TabStop = true;
 			this->llregister->Text = L"Register";
@@ -156,24 +161,35 @@ namespace personalOrganizer {
 			// 
 			// label4
 			// 
-			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(68, 339);
+			this->label4->Font = (gcnew System::Drawing::Font(L"High Tower Text", 13.8F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->label4->Location = System::Drawing::Point(779, 498);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(262, 32);
+			this->label4->Size = System::Drawing::Size(236, 32);
 			this->label4->TabIndex = 8;
 			this->label4->Text = L"Don\'t have an account\?";
 			this->label4->Click += gcnew System::EventHandler(this, &LoginForm::label4_Click);
+			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
+			this->pictureBox1->Location = System::Drawing::Point(3, 2);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(632, 574);
+			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox1->TabIndex = 9;
+			this->pictureBox1->TabStop = false;
 			// 
 			// LoginForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(16, 31);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			this->ClientSize = System::Drawing::Size(552, 381);
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->ClientSize = System::Drawing::Size(1276, 575);
+			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->llregister);
-			this->Controls->Add(this->btncancel);
 			this->Controls->Add(this->btnok);
 			this->Controls->Add(this->tbpassword);
 			this->Controls->Add(this->label3);
@@ -182,10 +198,12 @@ namespace personalOrganizer {
 			this->Controls->Add(this->label1);
 			this->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
+			this->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
 			this->Margin = System::Windows::Forms::Padding(6);
 			this->Name = L"LoginForm";
 			this->Text = L"Login Form";
 			this->Load += gcnew System::EventHandler(this, &LoginForm::LoginForm_Load);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -249,5 +267,7 @@ namespace personalOrganizer {
 	}
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
+private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }
