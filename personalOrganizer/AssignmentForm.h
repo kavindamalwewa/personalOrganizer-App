@@ -85,20 +85,21 @@ namespace personalOrganizer {
 			// 
 			// button3
 			// 
-			this->button3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->button3->Location = System::Drawing::Point(204, 243);
+			this->button3->BackColor = System::Drawing::Color::Blue;
+			this->button3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->button3->Location = System::Drawing::Point(186, 242);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(150, 37);
+			this->button3->Size = System::Drawing::Size(175, 37);
 			this->button3->TabIndex = 35;
 			this->button3->Text = L"Add Assignment";
-			this->button3->UseVisualStyleBackColor = true;
+			this->button3->UseVisualStyleBackColor = false;
 			// 
 			// button2
 			// 
 			this->button2->BackColor = System::Drawing::Color::Crimson;
-			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->button2->Location = System::Drawing::Point(651, 616);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(150, 37);
@@ -109,42 +110,43 @@ namespace personalOrganizer {
 			// 
 			// button1
 			// 
-			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(461, 243);
+			this->button1->BackColor = System::Drawing::Color::Blue;
+			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->button1->Location = System::Drawing::Point(443, 242);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(150, 37);
+			this->button1->Size = System::Drawing::Size(175, 37);
 			this->button1->TabIndex = 37;
 			this->button1->Text = L"Refresh";
-			this->button1->UseVisualStyleBackColor = true;
+			this->button1->UseVisualStyleBackColor = false;
 			// 
 			// dateTimePicker1
 			// 
-			this->dateTimePicker1->Location = System::Drawing::Point(150, 142);
+			this->dateTimePicker1->Location = System::Drawing::Point(150, 144);
 			this->dateTimePicker1->Name = L"dateTimePicker1";
 			this->dateTimePicker1->RightToLeft = System::Windows::Forms::RightToLeft::No;
-			this->dateTimePicker1->Size = System::Drawing::Size(228, 22);
+			this->dateTimePicker1->Size = System::Drawing::Size(246, 22);
 			this->dateTimePicker1->TabIndex = 34;
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label3->Location = System::Drawing::Point(23, 144);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(108, 20);
+			this->label3->Size = System::Drawing::Size(113, 22);
 			this->label3->TabIndex = 32;
 			this->label3->Text = L"Start Date :";
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label2->Location = System::Drawing::Point(23, 98);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(90, 20);
+			this->label2->Size = System::Drawing::Size(95, 22);
 			this->label2->TabIndex = 33;
 			this->label2->Text = L"Subject : ";
 			// 
@@ -155,16 +157,16 @@ namespace personalOrganizer {
 				L"Web Technologies", L"Design and Analysis of Algorithms",
 					L"Software Engineering", L"Graphics and Image Processing", L"English for Professional Purposes"
 			});
-			this->budgetsource->Location = System::Drawing::Point(150, 94);
+			this->budgetsource->Location = System::Drawing::Point(150, 96);
 			this->budgetsource->Name = L"budgetsource";
-			this->budgetsource->Size = System::Drawing::Size(228, 24);
+			this->budgetsource->Size = System::Drawing::Size(246, 24);
 			this->budgetsource->TabIndex = 31;
 			// 
 			// label1
 			// 
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 25.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(1, 9);
+			this->label1->Font = (gcnew System::Drawing::Font(L"Times New Roman", 25.8F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->label1->Location = System::Drawing::Point(-2, 19);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(819, 62);
 			this->label1->TabIndex = 30;
@@ -174,30 +176,32 @@ namespace personalOrganizer {
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label4->Location = System::Drawing::Point(23, 190);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(99, 20);
+			this->label4->Size = System::Drawing::Size(105, 22);
 			this->label4->TabIndex = 32;
 			this->label4->Text = L"End Date :";
 			// 
 			// dateTimePicker2
 			// 
-			this->dateTimePicker2->Location = System::Drawing::Point(150, 188);
+			this->dateTimePicker2->Location = System::Drawing::Point(150, 190);
 			this->dateTimePicker2->Name = L"dateTimePicker2";
 			this->dateTimePicker2->RightToLeft = System::Windows::Forms::RightToLeft::No;
-			this->dateTimePicker2->Size = System::Drawing::Size(228, 22);
+			this->dateTimePicker2->Size = System::Drawing::Size(246, 22);
 			this->dateTimePicker2->TabIndex = 34;
 			// 
 			// dataGridView1
 			// 
 			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
+			this->dataGridView1->BackgroundColor = System::Drawing::Color::Cyan;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
 				this->Column1,
 					this->Column2, this->Column3, this->Column4
 			});
+			this->dataGridView1->GridColor = System::Drawing::SystemColors::ActiveCaptionText;
 			this->dataGridView1->Location = System::Drawing::Point(65, 299);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 51;
@@ -233,6 +237,8 @@ namespace personalOrganizer {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->ClientSize = System::Drawing::Size(829, 665);
 			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->button3);
