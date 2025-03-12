@@ -330,7 +330,7 @@ private: System::Void llbudget_LinkClicked(System::Object^ sender, System::Windo
 	budgetform->ShowDialog();
 }
 private: System::Void llacademic_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
-	AcademicForm^ academicform = gcnew AcademicForm();
+	AcademicForm^ academicform = gcnew AcademicForm(loggedInUsername);
 	academicform->ShowDialog();
 }
 private: System::Void pictureBox2_Click(System::Object^ sender, System::EventArgs^ e) {

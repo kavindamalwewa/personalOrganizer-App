@@ -206,6 +206,7 @@ namespace personalOrganizer {
 			this->label5->Size = System::Drawing::Size(129, 20);
 			this->label5->TabIndex = 6;
 			this->label5->Text = L"Income Name:";
+			this->label5->Click += gcnew System::EventHandler(this, &Income::label5_Click);
 			// 
 			// tbincomename
 			// 
@@ -336,6 +337,8 @@ private: System::Void btnaddincome_Click(System::Object^ sender, System::EventAr
 	}
 
 
+}
+private: System::Void label5_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

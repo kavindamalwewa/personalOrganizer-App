@@ -1,5 +1,6 @@
 #pragma once
 #include"AssignmentForm.h"
+#include"User.h"
 
 namespace personalOrganizer {
 
@@ -9,6 +10,7 @@ namespace personalOrganizer {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Data::SqlClient;
 
 	/// <summary>
 	/// Summary for AcademicForm
@@ -16,13 +18,21 @@ namespace personalOrganizer {
 	public ref class AcademicForm : public System::Windows::Forms::Form
 	{
 	public:
-		AcademicForm(void)
-		{
+
+		String^ name;
+
+		AcademicForm(String^ loggedInUsername) {
 			InitializeComponent();
+			name = loggedInUsername;
+		}
+
+		//AcademicForm(void)
+		//{
+			//InitializeComponent();
 			//
 			//TODO: Add the constructor code here
 			//
-		}
+		//}
 
 	protected:
 		/// <summary>
@@ -37,9 +47,13 @@ namespace personalOrganizer {
 		}
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label2;
-	private: System::Windows::Forms::ComboBox^ budgetsource;
+	private: System::Windows::Forms::ComboBox^ tbsubject;
+
+
 	private: System::Windows::Forms::Label^ label3;
-	private: System::Windows::Forms::DateTimePicker^ dateTimePicker1;
+	private: System::Windows::Forms::DateTimePicker^ dtpdate;
+
+
 	private: System::Windows::Forms::Label^ label4;
 
 	private: System::Windows::Forms::Button^ button3;
@@ -52,13 +66,17 @@ namespace personalOrganizer {
 
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::Button^ button4;
-	private: System::Windows::Forms::DateTimePicker^ dateTimePicker2;
+	private: System::Windows::Forms::DateTimePicker^ dtpendtime;
+
+
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
 	private: System::Windows::Forms::Label^ label6;
-	private: System::Windows::Forms::DateTimePicker^ dateTimePicker3;
+	private: System::Windows::Forms::DateTimePicker^ dtpstarttime;
+
+
 
 
 
@@ -86,9 +104,9 @@ namespace personalOrganizer {
 		{
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->budgetsource = (gcnew System::Windows::Forms::ComboBox());
+			this->tbsubject = (gcnew System::Windows::Forms::ComboBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->dateTimePicker1 = (gcnew System::Windows::Forms::DateTimePicker());
+			this->dtpdate = (gcnew System::Windows::Forms::DateTimePicker());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
@@ -100,9 +118,9 @@ namespace personalOrganizer {
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button4 = (gcnew System::Windows::Forms::Button());
-			this->dateTimePicker2 = (gcnew System::Windows::Forms::DateTimePicker());
+			this->dtpendtime = (gcnew System::Windows::Forms::DateTimePicker());
 			this->label6 = (gcnew System::Windows::Forms::Label());
-			this->dateTimePicker3 = (gcnew System::Windows::Forms::DateTimePicker());
+			this->dtpstarttime = (gcnew System::Windows::Forms::DateTimePicker());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -128,17 +146,17 @@ namespace personalOrganizer {
 			this->label2->TabIndex = 26;
 			this->label2->Text = L"Subject : ";
 			// 
-			// budgetsource
+			// tbsubject
 			// 
-			this->budgetsource->FormattingEnabled = true;
-			this->budgetsource->Items->AddRange(gcnew cli::array< System::Object^  >(5) {
+			this->tbsubject->FormattingEnabled = true;
+			this->tbsubject->Items->AddRange(gcnew cli::array< System::Object^  >(5) {
 				L"Web Technologies", L"Design and Analysis of Algorithms",
 					L"Software Engineering", L"Graphics and Image Processing", L"English for Professional Purposes"
 			});
-			this->budgetsource->Location = System::Drawing::Point(133, 85);
-			this->budgetsource->Name = L"budgetsource";
-			this->budgetsource->Size = System::Drawing::Size(255, 24);
-			this->budgetsource->TabIndex = 25;
+			this->tbsubject->Location = System::Drawing::Point(133, 85);
+			this->tbsubject->Name = L"tbsubject";
+			this->tbsubject->Size = System::Drawing::Size(255, 24);
+			this->tbsubject->TabIndex = 25;
 			// 
 			// label3
 			// 
@@ -151,13 +169,13 @@ namespace personalOrganizer {
 			this->label3->TabIndex = 26;
 			this->label3->Text = L"Date :";
 			// 
-			// dateTimePicker1
+			// dtpdate
 			// 
-			this->dateTimePicker1->Location = System::Drawing::Point(133, 135);
-			this->dateTimePicker1->Name = L"dateTimePicker1";
-			this->dateTimePicker1->RightToLeft = System::Windows::Forms::RightToLeft::No;
-			this->dateTimePicker1->Size = System::Drawing::Size(255, 22);
-			this->dateTimePicker1->TabIndex = 27;
+			this->dtpdate->Location = System::Drawing::Point(133, 135);
+			this->dtpdate->Name = L"dtpdate";
+			this->dtpdate->RightToLeft = System::Windows::Forms::RightToLeft::No;
+			this->dtpdate->Size = System::Drawing::Size(255, 22);
+			this->dtpdate->TabIndex = 27;
 			// 
 			// label4
 			// 
@@ -181,6 +199,7 @@ namespace personalOrganizer {
 			this->button3->TabIndex = 28;
 			this->button3->Text = L"Add Lectures";
 			this->button3->UseVisualStyleBackColor = false;
+			this->button3->Click += gcnew System::EventHandler(this, &AcademicForm::button3_Click);
 			// 
 			// button1
 			// 
@@ -271,15 +290,15 @@ namespace personalOrganizer {
 			this->button4->UseVisualStyleBackColor = false;
 			this->button4->Click += gcnew System::EventHandler(this, &AcademicForm::button4_Click);
 			// 
-			// dateTimePicker2
+			// dtpendtime
 			// 
-			this->dateTimePicker2->CustomFormat = L"hh:mm tt";
-			this->dateTimePicker2->Format = System::Windows::Forms::DateTimePickerFormat::Custom;
-			this->dateTimePicker2->Location = System::Drawing::Point(588, 135);
-			this->dateTimePicker2->Name = L"dateTimePicker2";
-			this->dateTimePicker2->ShowUpDown = true;
-			this->dateTimePicker2->Size = System::Drawing::Size(164, 22);
-			this->dateTimePicker2->TabIndex = 38;
+			this->dtpendtime->CustomFormat = L"hh:mm tt";
+			this->dtpendtime->Format = System::Windows::Forms::DateTimePickerFormat::Custom;
+			this->dtpendtime->Location = System::Drawing::Point(588, 135);
+			this->dtpendtime->Name = L"dtpendtime";
+			this->dtpendtime->ShowUpDown = true;
+			this->dtpendtime->Size = System::Drawing::Size(164, 22);
+			this->dtpendtime->TabIndex = 38;
 			// 
 			// label6
 			// 
@@ -292,16 +311,16 @@ namespace personalOrganizer {
 			this->label6->TabIndex = 26;
 			this->label6->Text = L"Start Time : ";
 			// 
-			// dateTimePicker3
+			// dtpstarttime
 			// 
-			this->dateTimePicker3->CustomFormat = L"hh:mm tt";
-			this->dateTimePicker3->DropDownAlign = System::Windows::Forms::LeftRightAlignment::Right;
-			this->dateTimePicker3->Format = System::Windows::Forms::DateTimePickerFormat::Custom;
-			this->dateTimePicker3->Location = System::Drawing::Point(588, 87);
-			this->dateTimePicker3->Name = L"dateTimePicker3";
-			this->dateTimePicker3->ShowUpDown = true;
-			this->dateTimePicker3->Size = System::Drawing::Size(164, 22);
-			this->dateTimePicker3->TabIndex = 38;
+			this->dtpstarttime->CustomFormat = L"hh:mm tt";
+			this->dtpstarttime->DropDownAlign = System::Windows::Forms::LeftRightAlignment::Right;
+			this->dtpstarttime->Format = System::Windows::Forms::DateTimePickerFormat::Custom;
+			this->dtpstarttime->Location = System::Drawing::Point(588, 87);
+			this->dtpstarttime->Name = L"dtpstarttime";
+			this->dtpstarttime->ShowUpDown = true;
+			this->dtpstarttime->Size = System::Drawing::Size(164, 22);
+			this->dtpstarttime->TabIndex = 38;
 			// 
 			// AcademicForm
 			// 
@@ -310,20 +329,20 @@ namespace personalOrganizer {
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
 				static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->ClientSize = System::Drawing::Size(820, 697);
-			this->Controls->Add(this->dateTimePicker3);
-			this->Controls->Add(this->dateTimePicker2);
+			this->Controls->Add(this->dtpstarttime);
+			this->Controls->Add(this->dtpendtime);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
-			this->Controls->Add(this->dateTimePicker1);
+			this->Controls->Add(this->dtpdate);
 			this->Controls->Add(this->label6);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->label2);
-			this->Controls->Add(this->budgetsource);
+			this->Controls->Add(this->tbsubject);
 			this->Controls->Add(this->label1);
 			this->Name = L"AcademicForm";
 			this->Text = L"AcademicForm";
@@ -347,6 +366,46 @@ private: System::Void linkLabel1_LinkClicked(System::Object^ sender, System::Win
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 	AssignmentForm^ assignmentform = gcnew AssignmentForm();
 	assignmentform->ShowDialog();
+}
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+	String^ Subject = tbsubject->Text;
+	String^ Date = dtpdate->Value.ToString("yyyy-MM-dd");
+	String^ Starttime = dtpstarttime->Value.ToString("hh:mm");
+	String^ Endtime = dtpendtime->Value.ToString("hh:mm");
+
+	if (String::IsNullOrWhiteSpace(Subject) || String::IsNullOrWhiteSpace(Date) || String::IsNullOrWhiteSpace(Starttime) || String::IsNullOrWhiteSpace(Endtime)) {
+		MessageBox::Show("Please fill in all fields.", "Missing Information", MessageBoxButtons::OK);
+		return;
+	}
+
+	try {
+		String^ connString = "Data Source=KAVINDA_MALWEWA\\sqlexpress;Initial Catalog=useraccountsystem;Integrated Security=True;TrustServerCertificate=True";
+		SqlConnection sqlConn(connString);
+		sqlConn.Open();
+
+		if (String::IsNullOrEmpty(name)) {
+			MessageBox::Show("Name is not set.", "Error", MessageBoxButtons::OK);
+			return;
+		}
+
+		String^ sqlQuery = "INSERT INTO academic (name, subject, date, start_time,end_time) VALUES (@name, @Subject, @Date, @Starttime, @Endtime)";
+		SqlCommand command(sqlQuery, % sqlConn);
+
+		command.Parameters->AddWithValue("@name", name);
+		command.Parameters->AddWithValue("@Subject", Subject);
+		command.Parameters->AddWithValue("@Date", Date);
+		command.Parameters->AddWithValue("@Starttime", Starttime);
+		command.Parameters->AddWithValue("@Endtime", Endtime);
+
+
+		command.ExecuteNonQuery();
+
+		MessageBox::Show("Lecture record updated successfully!", "Success", MessageBoxButtons::OK);
+		//this->Close(); 
+	}
+	catch (Exception^ ex) {
+		MessageBox::Show("Failed to update Lecture Schedule. Error: " + ex->Message, "Academic Failure", MessageBoxButtons::OK);
+	}
 }
 };
 }
