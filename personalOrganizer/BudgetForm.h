@@ -32,7 +32,7 @@ namespace personalOrganizer {
 
 
 
-			//////////////////// FOOD BUDGET LABEL ////////////////////////////////
+			// FOOD BUDGET LABEL 
 			String^ sqlQuery = "SELECT budgetAmount FROM budget WHERE name = @name AND budgetSource = 'Food'";
 			SqlCommand command(sqlQuery, % sqlConn);
 			command.Parameters->AddWithValue("@name", name);
@@ -46,7 +46,7 @@ namespace personalOrganizer {
 				foodbudget->Text = "No budget set for Food";
 			}
 
-			//////////////////// FOOD SPENT LABEL ////////////////////////////////
+			// FOOD SPENT LABEL 
 
 			String^ expenseQuery = "SELECT SUM(expenseamount) FROM expense WHERE name = @name AND expensesource = 'Food'";
 			SqlCommand expenseCommand(expenseQuery, % sqlConn);
@@ -61,7 +61,7 @@ namespace personalOrganizer {
 				foodspent->Text = "No expenses for Food";
 			}
 
-			////////////////////// FOOD REMAIN CALCULATION ////////////////////////////////
+			// FOOD REMAIN CALCULATION 
 
 			if (foodbudget->Text != "No budget set for Food" && foodspent->Text != "No expenses for Food") {
 				// Convert the values from labels to float for calculation
@@ -87,7 +87,7 @@ namespace personalOrganizer {
 
 
 
-			////////////////////// ENTERTAINMENT BUDGET LABEL ////////////////////////////////
+			// ENTERTAINMENT BUDGET LABEL 
 
 			String^ entSqlQuery = "SELECT budgetAmount FROM budget WHERE name = @name AND budgetSource = 'Entertainment'";
 			SqlCommand entCommand(entSqlQuery, % sqlConn);
@@ -102,7 +102,7 @@ namespace personalOrganizer {
 				entbudget->Text = "No budget set for Entertainment";
 			}
 
-			////////////////////// ENTERTAINMENT SPENT LABEL ////////////////////////////////
+			// ENTERTAINMENT SPENT LABEL
 
 			String^ entExpenseQuery = "SELECT SUM(expenseamount) FROM expense WHERE name = @name AND expensesource = 'Entertainment'";
 			SqlCommand entExpenseCommand(entExpenseQuery, % sqlConn);
@@ -118,7 +118,7 @@ namespace personalOrganizer {
 			}
 			
 
-			////////////////////// ENTERTAINMENT CALCULATION ////////////////////////////////
+			// ENTERTAINMENT CALCULATION 
 
 			if (entbudget->Text != "No budget set for Entertainment" && entspent->Text != "No expenses for Entertainment") {
 					float entBudgetAmount = Convert::ToSingle(entbudget->Text);
@@ -137,7 +137,7 @@ namespace personalOrganizer {
 				}
 
 
-			////////////////////// CLOTHES BUDGET LABEL ////////////////////////////////
+			// CLOTHES BUDGET LABEL 
 			
 			String^ cloSqlQuery = "SELECT budgetAmount FROM budget WHERE name = @name AND budgetSource = 'Clothing'";
 			SqlCommand cloCommand(cloSqlQuery, % sqlConn);
@@ -152,7 +152,7 @@ namespace personalOrganizer {
 				clothbudget->Text = "No budget set for Clothes";
 			}
 
-			////////////////////// CLOTHES SPENT LABEL ////////////////////////////////
+			// CLOTHES SPENT LABEL 
 
 			String^ cloExpenseQuery = "SELECT SUM(expenseamount) FROM expense WHERE name = @name AND expensesource = 'Clothing'";
 			SqlCommand cloExpenseCommand(cloExpenseQuery, % sqlConn);
@@ -167,7 +167,7 @@ namespace personalOrganizer {
 				clothspent->Text = "No expenses for Clothes";
 			}
 
-			////////////////////// CLOTHES CALCULATION ////////////////////////////////
+			// CLOTHES CALCULATION 
 
 			if (clothbudget->Text != "No budget set for Clothes" && clothspent->Text != "No expenses for Clothes") {
 				float cloBudgetAmount = Convert::ToSingle(clothbudget->Text);
@@ -186,7 +186,7 @@ namespace personalOrganizer {
 			}
 
 
-			////////////////////// TRAVELLING BUDGET LABEL ////////////////////////////////
+			// TRAVELLING BUDGET LABEL 
 			
 			String^ traSqlQuery = "SELECT budgetAmount FROM budget WHERE name = @name AND budgetSource = 'Travelling'";
 			SqlCommand traCommand(traSqlQuery, % sqlConn);
@@ -201,7 +201,7 @@ namespace personalOrganizer {
 				travelbudget->Text = "No budget set for Travelling";
 			}
 
-			////////////////////// TRAVELLING SPENT LABEL ////////////////////////////////
+			// TRAVELLING SPENT LABEL 
 
 			String^ traExpenseQuery = "SELECT SUM(expenseamount) FROM expense WHERE name = @name AND expensesource = 'Travelling'";
 			SqlCommand traExpenseCommand(traExpenseQuery, % sqlConn);
@@ -216,7 +216,7 @@ namespace personalOrganizer {
 				travelspent->Text = "No expenses for Travelling";
 			}
 
-			////////////////////// TRAVELLING CALCULATION ////////////////////////////////
+			// TRAVELLING CALCULATION 
 
 			if (travelbudget->Text != "No budget set for Travelling" && travelspent->Text != "No expenses for Travelling") {
 				float traBudgetAmount = Convert::ToSingle(travelbudget->Text);
@@ -235,7 +235,7 @@ namespace personalOrganizer {
 			}
 
 
-			////////////////////// EDUCATION BUDGET LABEL ////////////////////////////////
+			// EDUCATION BUDGET LABEL 
 
 			String^ eduSqlQuery = "SELECT budgetAmount FROM budget WHERE name = @name AND budgetSource = 'Education Equipment'";
 			SqlCommand eduCommand(eduSqlQuery, % sqlConn);
@@ -250,7 +250,7 @@ namespace personalOrganizer {
 				edubudget->Text = "No budget set for Education Equipment";
 			}
 
-			////////////////////// EDUCATION SPENT LABEL ////////////////////////////////
+			// EDUCATION SPENT LABEL 
 
 			String^ eduExpenseQuery = "SELECT SUM(expenseamount) FROM expense WHERE name = @name AND expensesource = 'Education Equipment'";
 			SqlCommand eduExpenseCommand(eduExpenseQuery, % sqlConn);
@@ -265,7 +265,7 @@ namespace personalOrganizer {
 				eduspent->Text = "No expenses for Education Equipment";
 			}
 
-			////////////////////// EDUCATION CALCULATION ////////////////////////////////
+			// EDUCATION CALCULATION 
 
 			if (edubudget->Text != "No budget set for Education Equipment" && eduspent->Text != "No expenses for Education Equipment") {
 				float eduBudgetAmount = Convert::ToSingle(edubudget->Text);
@@ -284,7 +284,7 @@ namespace personalOrganizer {
 			}
 
 
-			////////////////////// UNIVERSITY BUDGET LABEL ////////////////////////////////
+			// UNIVERSITY BUDGET LABEL 
 
 			String^ uniSqlQuery = "SELECT budgetAmount FROM budget WHERE name = @name AND budgetSource = 'University Fees'";
 			SqlCommand uniCommand(uniSqlQuery, % sqlConn);
@@ -299,7 +299,7 @@ namespace personalOrganizer {
 				unibudget->Text = "No budget set for University Fees";
 			}
 
-			////////////////////// UNIVERSITY SPENT LABEL ////////////////////////////////
+			// UNIVERSITY SPENT LABEL 
 
 			String^ uniExpenseQuery = "SELECT SUM(expenseamount) FROM expense WHERE name = @name AND expensesource = 'University Fees'";
 			SqlCommand uniExpenseCommand(uniExpenseQuery, % sqlConn);
@@ -314,7 +314,7 @@ namespace personalOrganizer {
 				unispent->Text = "No expenses for University Fees";
 			}
 
-			////////////////////// UNIVERSITY CALCULATION ////////////////////////////////
+			// UNIVERSITY CALCULATION 
 
 			if (unibudget->Text != "No budget set for University Fees" && unispent->Text != "No expenses for University Fees") {
 				float uniBudgetAmount = Convert::ToSingle(unibudget->Text);
@@ -479,9 +479,6 @@ private: System::Windows::Forms::Label^ uniremain;
 			this->foodbudget = (gcnew System::Windows::Forms::Label());
 			this->foodspent = (gcnew System::Windows::Forms::Label());
 			this->foodremain = (gcnew System::Windows::Forms::Label());
-			this->button3 = (gcnew System::Windows::Forms::Button());
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->lbUserInfo = (gcnew System::Windows::Forms::Label());
 			this->entbudget = (gcnew System::Windows::Forms::Label());
 			this->entspent = (gcnew System::Windows::Forms::Label());
 			this->entremain = (gcnew System::Windows::Forms::Label());
@@ -497,41 +494,46 @@ private: System::Windows::Forms::Label^ uniremain;
 			this->clothremain = (gcnew System::Windows::Forms::Label());
 			this->eduremain = (gcnew System::Windows::Forms::Label());
 			this->uniremain = (gcnew System::Windows::Forms::Label());
+			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->lbUserInfo = (gcnew System::Windows::Forms::Label());
 			this->tableLayoutPanel1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// button1
 			// 
-			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(601, 570);
+			this->button1->BackColor = System::Drawing::Color::Blue;
+			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->button1->Location = System::Drawing::Point(592, 572);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(100, 30);
+			this->button1->Size = System::Drawing::Size(106, 30);
 			this->button1->TabIndex = 0;
 			this->button1->Text = L"Refresh";
-			this->button1->UseVisualStyleBackColor = true;
+			this->button1->UseVisualStyleBackColor = false;
 			this->button1->Click += gcnew System::EventHandler(this, &BudgetForm::button1_Click);
 			// 
 			// button2
 			// 
-			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->button2->Location = System::Drawing::Point(751, 570);
+			this->button2->BackColor = System::Drawing::Color::Blue;
+			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->button2->Location = System::Drawing::Point(742, 572);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(100, 30);
+			this->button2->Size = System::Drawing::Size(106, 30);
 			this->button2->TabIndex = 1;
 			this->button2->Text = L"Close";
-			this->button2->UseVisualStyleBackColor = true;
+			this->button2->UseVisualStyleBackColor = false;
 			this->button2->Click += gcnew System::EventHandler(this, &BudgetForm::button2_Click);
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(414, 106);
+			this->label4->Location = System::Drawing::Point(404, 104);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(84, 20);
+			this->label4->Size = System::Drawing::Size(89, 22);
 			this->label4->TabIndex = 20;
 			this->label4->Text = L"Amount :";
 			this->label4->Click += gcnew System::EventHandler(this, &BudgetForm::label4_Click);
@@ -539,17 +541,18 @@ private: System::Windows::Forms::Label^ uniremain;
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(12, 108);
+			this->label2->Location = System::Drawing::Point(12, 104);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(157, 20);
+			this->label2->Size = System::Drawing::Size(168, 22);
 			this->label2->TabIndex = 21;
 			this->label2->Text = L"Expense Source :";
 			this->label2->Click += gcnew System::EventHandler(this, &BudgetForm::label2_Click);
 			// 
 			// budgetamount
 			// 
+			this->budgetamount->BackColor = System::Drawing::Color::Silver;
 			this->budgetamount->Location = System::Drawing::Point(518, 104);
 			this->budgetamount->Name = L"budgetamount";
 			this->budgetamount->Size = System::Drawing::Size(165, 22);
@@ -558,6 +561,7 @@ private: System::Windows::Forms::Label^ uniremain;
 			// 
 			// budgetsource
 			// 
+			this->budgetsource->BackColor = System::Drawing::Color::Silver;
 			this->budgetsource->FormattingEnabled = true;
 			this->budgetsource->Items->AddRange(gcnew cli::array< System::Object^  >(6) {
 				L"Food", L"Entertainment", L"Travelling", L"Clothing",
@@ -571,6 +575,7 @@ private: System::Windows::Forms::Label^ uniremain;
 			// 
 			// tableLayoutPanel1
 			// 
+			this->tableLayoutPanel1->BackColor = System::Drawing::Color::Cyan;
 			this->tableLayoutPanel1->CellBorderStyle = System::Windows::Forms::TableLayoutPanelCellBorderStyle::Single;
 			this->tableLayoutPanel1->ColumnCount = 4;
 			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
@@ -580,7 +585,7 @@ private: System::Windows::Forms::Label^ uniremain;
 			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Absolute,
 				189)));
 			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Absolute,
-				196)));
+				200)));
 			this->tableLayoutPanel1->Controls->Add(this->label3, 1, 0);
 			this->tableLayoutPanel1->Controls->Add(this->label6, 2, 0);
 			this->tableLayoutPanel1->Controls->Add(this->label7, 3, 0);
@@ -589,7 +594,6 @@ private: System::Windows::Forms::Label^ uniremain;
 			this->tableLayoutPanel1->Controls->Add(this->label9, 0, 2);
 			this->tableLayoutPanel1->Controls->Add(this->label10, 0, 3);
 			this->tableLayoutPanel1->Controls->Add(this->label11, 0, 4);
-			this->tableLayoutPanel1->Controls->Add(this->label12, 0, 5);
 			this->tableLayoutPanel1->Controls->Add(this->label13, 0, 6);
 			this->tableLayoutPanel1->Controls->Add(this->foodbudget, 1, 1);
 			this->tableLayoutPanel1->Controls->Add(this->foodspent, 2, 1);
@@ -609,6 +613,7 @@ private: System::Windows::Forms::Label^ uniremain;
 			this->tableLayoutPanel1->Controls->Add(this->clothremain, 3, 4);
 			this->tableLayoutPanel1->Controls->Add(this->eduremain, 3, 5);
 			this->tableLayoutPanel1->Controls->Add(this->uniremain, 3, 6);
+			this->tableLayoutPanel1->Controls->Add(this->label12, 0, 5);
 			this->tableLayoutPanel1->Location = System::Drawing::Point(28, 178);
 			this->tableLayoutPanel1->Name = L"tableLayoutPanel1";
 			this->tableLayoutPanel1->RowCount = 7;
@@ -625,22 +630,22 @@ private: System::Windows::Forms::Label^ uniremain;
 			// 
 			// label3
 			// 
-			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->label3->ForeColor = System::Drawing::Color::Blue;
-			this->label3->Location = System::Drawing::Point(254, 1);
+			this->label3->Location = System::Drawing::Point(252, 1);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(177, 60);
+			this->label3->Size = System::Drawing::Size(175, 60);
 			this->label3->TabIndex = 0;
 			this->label3->Text = L"Budget";
 			this->label3->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// label6
 			// 
-			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->label6->ForeColor = System::Drawing::Color::Blue;
-			this->label6->Location = System::Drawing::Point(438, 1);
+			this->label6->Location = System::Drawing::Point(434, 1);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(183, 60);
 			this->label6->TabIndex = 0;
@@ -649,10 +654,10 @@ private: System::Windows::Forms::Label^ uniremain;
 			// 
 			// label7
 			// 
-			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->label7->ForeColor = System::Drawing::Color::Blue;
-			this->label7->Location = System::Drawing::Point(628, 1);
+			this->label7->Location = System::Drawing::Point(624, 1);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(177, 60);
 			this->label7->TabIndex = 0;
@@ -661,8 +666,8 @@ private: System::Windows::Forms::Label^ uniremain;
 			// 
 			// label5
 			// 
-			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->label5->ForeColor = System::Drawing::Color::Blue;
 			this->label5->Location = System::Drawing::Point(4, 1);
 			this->label5->Name = L"label5";
@@ -673,11 +678,11 @@ private: System::Windows::Forms::Label^ uniremain;
 			// 
 			// label8
 			// 
-			this->label8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			this->label8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->label8->Location = System::Drawing::Point(4, 62);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(243, 48);
+			this->label8->Size = System::Drawing::Size(241, 48);
 			this->label8->TabIndex = 1;
 			this->label8->Text = L"FOOD";
 			this->label8->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -685,11 +690,11 @@ private: System::Windows::Forms::Label^ uniremain;
 			// 
 			// label9
 			// 
-			this->label9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			this->label9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->label9->Location = System::Drawing::Point(4, 111);
 			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(243, 48);
+			this->label9->Size = System::Drawing::Size(241, 48);
 			this->label9->TabIndex = 1;
 			this->label9->Text = L"ENTERTAINMENT";
 			this->label9->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -697,11 +702,11 @@ private: System::Windows::Forms::Label^ uniremain;
 			// 
 			// label10
 			// 
-			this->label10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			this->label10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->label10->Location = System::Drawing::Point(4, 161);
 			this->label10->Name = L"label10";
-			this->label10->Size = System::Drawing::Size(243, 48);
+			this->label10->Size = System::Drawing::Size(241, 48);
 			this->label10->TabIndex = 1;
 			this->label10->Text = L"TRAVELLING";
 			this->label10->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -709,11 +714,11 @@ private: System::Windows::Forms::Label^ uniremain;
 			// 
 			// label11
 			// 
-			this->label11->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			this->label11->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->label11->Location = System::Drawing::Point(4, 213);
 			this->label11->Name = L"label11";
-			this->label11->Size = System::Drawing::Size(243, 48);
+			this->label11->Size = System::Drawing::Size(241, 48);
 			this->label11->TabIndex = 1;
 			this->label11->Text = L"CLOTHING";
 			this->label11->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -721,35 +726,35 @@ private: System::Windows::Forms::Label^ uniremain;
 			// 
 			// label12
 			// 
-			this->label12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			this->label12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->label12->Location = System::Drawing::Point(4, 265);
 			this->label12->Name = L"label12";
-			this->label12->Size = System::Drawing::Size(243, 48);
+			this->label12->Size = System::Drawing::Size(241, 49);
 			this->label12->TabIndex = 1;
 			this->label12->Text = L"EDUCATION EQUIPMENT\r\n";
-			this->label12->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->label12->TextAlign = System::Drawing::ContentAlignment::BottomCenter;
 			this->label12->Click += gcnew System::EventHandler(this, &BudgetForm::label8_Click);
 			// 
 			// label13
 			// 
-			this->label13->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			this->label13->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->label13->Location = System::Drawing::Point(4, 315);
 			this->label13->Name = L"label13";
-			this->label13->Size = System::Drawing::Size(243, 48);
+			this->label13->Size = System::Drawing::Size(241, 50);
 			this->label13->TabIndex = 1;
 			this->label13->Text = L"UNIVERSITY FEES\r\n";
-			this->label13->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->label13->TextAlign = System::Drawing::ContentAlignment::BottomCenter;
 			this->label13->Click += gcnew System::EventHandler(this, &BudgetForm::label8_Click);
 			// 
 			// foodbudget
 			// 
 			this->foodbudget->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->foodbudget->Location = System::Drawing::Point(254, 62);
+			this->foodbudget->Location = System::Drawing::Point(252, 62);
 			this->foodbudget->Name = L"foodbudget";
-			this->foodbudget->Size = System::Drawing::Size(177, 48);
+			this->foodbudget->Size = System::Drawing::Size(175, 48);
 			this->foodbudget->TabIndex = 1;
 			this->foodbudget->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			this->foodbudget->Click += gcnew System::EventHandler(this, &BudgetForm::label8_Click);
@@ -758,7 +763,7 @@ private: System::Windows::Forms::Label^ uniremain;
 			// 
 			this->foodspent->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->foodspent->Location = System::Drawing::Point(438, 62);
+			this->foodspent->Location = System::Drawing::Point(434, 62);
 			this->foodspent->Name = L"foodspent";
 			this->foodspent->Size = System::Drawing::Size(183, 48);
 			this->foodspent->TabIndex = 1;
@@ -769,29 +774,195 @@ private: System::Windows::Forms::Label^ uniremain;
 			// 
 			this->foodremain->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->foodremain->Location = System::Drawing::Point(628, 62);
+			this->foodremain->Location = System::Drawing::Point(624, 62);
 			this->foodremain->Name = L"foodremain";
 			this->foodremain->Size = System::Drawing::Size(189, 48);
 			this->foodremain->TabIndex = 1;
 			this->foodremain->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			this->foodremain->Click += gcnew System::EventHandler(this, &BudgetForm::label8_Click);
 			// 
+			// entbudget
+			// 
+			this->entbudget->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->entbudget->Location = System::Drawing::Point(252, 111);
+			this->entbudget->Name = L"entbudget";
+			this->entbudget->Size = System::Drawing::Size(175, 48);
+			this->entbudget->TabIndex = 1;
+			this->entbudget->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->entbudget->Click += gcnew System::EventHandler(this, &BudgetForm::label8_Click);
+			// 
+			// entspent
+			// 
+			this->entspent->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->entspent->Location = System::Drawing::Point(434, 111);
+			this->entspent->Name = L"entspent";
+			this->entspent->Size = System::Drawing::Size(177, 48);
+			this->entspent->TabIndex = 1;
+			this->entspent->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->entspent->Click += gcnew System::EventHandler(this, &BudgetForm::label8_Click);
+			// 
+			// entremain
+			// 
+			this->entremain->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->entremain->Location = System::Drawing::Point(624, 111);
+			this->entremain->Name = L"entremain";
+			this->entremain->Size = System::Drawing::Size(191, 48);
+			this->entremain->TabIndex = 1;
+			this->entremain->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->entremain->Click += gcnew System::EventHandler(this, &BudgetForm::label8_Click);
+			// 
+			// travelbudget
+			// 
+			this->travelbudget->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->travelbudget->Location = System::Drawing::Point(252, 161);
+			this->travelbudget->Name = L"travelbudget";
+			this->travelbudget->Size = System::Drawing::Size(175, 48);
+			this->travelbudget->TabIndex = 1;
+			this->travelbudget->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->travelbudget->Click += gcnew System::EventHandler(this, &BudgetForm::label8_Click);
+			// 
+			// clothbudget
+			// 
+			this->clothbudget->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->clothbudget->Location = System::Drawing::Point(252, 213);
+			this->clothbudget->Name = L"clothbudget";
+			this->clothbudget->Size = System::Drawing::Size(175, 48);
+			this->clothbudget->TabIndex = 1;
+			this->clothbudget->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->clothbudget->Click += gcnew System::EventHandler(this, &BudgetForm::label8_Click);
+			// 
+			// edubudget
+			// 
+			this->edubudget->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->edubudget->Location = System::Drawing::Point(252, 265);
+			this->edubudget->Name = L"edubudget";
+			this->edubudget->Size = System::Drawing::Size(175, 48);
+			this->edubudget->TabIndex = 1;
+			this->edubudget->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->edubudget->Click += gcnew System::EventHandler(this, &BudgetForm::label8_Click);
+			// 
+			// unibudget
+			// 
+			this->unibudget->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->unibudget->Location = System::Drawing::Point(252, 315);
+			this->unibudget->Name = L"unibudget";
+			this->unibudget->Size = System::Drawing::Size(175, 48);
+			this->unibudget->TabIndex = 1;
+			this->unibudget->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->unibudget->Click += gcnew System::EventHandler(this, &BudgetForm::label8_Click);
+			// 
+			// travelspent
+			// 
+			this->travelspent->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->travelspent->Location = System::Drawing::Point(434, 161);
+			this->travelspent->Name = L"travelspent";
+			this->travelspent->Size = System::Drawing::Size(183, 48);
+			this->travelspent->TabIndex = 1;
+			this->travelspent->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->travelspent->Click += gcnew System::EventHandler(this, &BudgetForm::label8_Click);
+			// 
+			// clothspent
+			// 
+			this->clothspent->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->clothspent->Location = System::Drawing::Point(434, 213);
+			this->clothspent->Name = L"clothspent";
+			this->clothspent->Size = System::Drawing::Size(183, 48);
+			this->clothspent->TabIndex = 1;
+			this->clothspent->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->clothspent->Click += gcnew System::EventHandler(this, &BudgetForm::label8_Click);
+			// 
+			// eduspent
+			// 
+			this->eduspent->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->eduspent->Location = System::Drawing::Point(434, 265);
+			this->eduspent->Name = L"eduspent";
+			this->eduspent->Size = System::Drawing::Size(177, 48);
+			this->eduspent->TabIndex = 1;
+			this->eduspent->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->eduspent->Click += gcnew System::EventHandler(this, &BudgetForm::label8_Click);
+			// 
+			// unispent
+			// 
+			this->unispent->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->unispent->Location = System::Drawing::Point(434, 315);
+			this->unispent->Name = L"unispent";
+			this->unispent->Size = System::Drawing::Size(177, 48);
+			this->unispent->TabIndex = 1;
+			this->unispent->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->unispent->Click += gcnew System::EventHandler(this, &BudgetForm::label8_Click);
+			// 
+			// travelremain
+			// 
+			this->travelremain->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->travelremain->Location = System::Drawing::Point(624, 161);
+			this->travelremain->Name = L"travelremain";
+			this->travelremain->Size = System::Drawing::Size(191, 48);
+			this->travelremain->TabIndex = 1;
+			this->travelremain->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->travelremain->Click += gcnew System::EventHandler(this, &BudgetForm::label8_Click);
+			// 
+			// clothremain
+			// 
+			this->clothremain->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->clothremain->Location = System::Drawing::Point(624, 213);
+			this->clothremain->Name = L"clothremain";
+			this->clothremain->Size = System::Drawing::Size(191, 48);
+			this->clothremain->TabIndex = 1;
+			this->clothremain->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->clothremain->Click += gcnew System::EventHandler(this, &BudgetForm::label8_Click);
+			// 
+			// eduremain
+			// 
+			this->eduremain->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->eduremain->Location = System::Drawing::Point(624, 265);
+			this->eduremain->Name = L"eduremain";
+			this->eduremain->Size = System::Drawing::Size(191, 48);
+			this->eduremain->TabIndex = 1;
+			this->eduremain->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->eduremain->Click += gcnew System::EventHandler(this, &BudgetForm::label8_Click);
+			// 
+			// uniremain
+			// 
+			this->uniremain->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->uniremain->Location = System::Drawing::Point(624, 315);
+			this->uniremain->Name = L"uniremain";
+			this->uniremain->Size = System::Drawing::Size(191, 48);
+			this->uniremain->TabIndex = 1;
+			this->uniremain->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->uniremain->Click += gcnew System::EventHandler(this, &BudgetForm::label8_Click);
+			// 
 			// button3
 			// 
-			this->button3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			this->button3->BackColor = System::Drawing::Color::Blue;
+			this->button3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->button3->Location = System::Drawing::Point(718, 97);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(150, 37);
 			this->button3->TabIndex = 0;
 			this->button3->Text = L"Add Budget";
-			this->button3->UseVisualStyleBackColor = true;
+			this->button3->UseVisualStyleBackColor = false;
 			this->button3->Click += gcnew System::EventHandler(this, &BudgetForm::button3_Click);
 			// 
 			// label1
 			// 
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 25.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			this->label1->Font = (gcnew System::Drawing::Font(L"Times New Roman", 25.8F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->label1->Location = System::Drawing::Point(3, 9);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(865, 62);
@@ -810,175 +981,12 @@ private: System::Windows::Forms::Label^ uniremain;
 			this->lbUserInfo->TabIndex = 24;
 			this->lbUserInfo->Text = L"Hi";
 			// 
-			// entbudget
-			// 
-			this->entbudget->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->entbudget->Location = System::Drawing::Point(254, 111);
-			this->entbudget->Name = L"entbudget";
-			this->entbudget->Size = System::Drawing::Size(177, 48);
-			this->entbudget->TabIndex = 1;
-			this->entbudget->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			this->entbudget->Click += gcnew System::EventHandler(this, &BudgetForm::label8_Click);
-			// 
-			// entspent
-			// 
-			this->entspent->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->entspent->Location = System::Drawing::Point(438, 111);
-			this->entspent->Name = L"entspent";
-			this->entspent->Size = System::Drawing::Size(177, 48);
-			this->entspent->TabIndex = 1;
-			this->entspent->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			this->entspent->Click += gcnew System::EventHandler(this, &BudgetForm::label8_Click);
-			// 
-			// entremain
-			// 
-			this->entremain->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->entremain->Location = System::Drawing::Point(628, 111);
-			this->entremain->Name = L"entremain";
-			this->entremain->Size = System::Drawing::Size(191, 48);
-			this->entremain->TabIndex = 1;
-			this->entremain->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			this->entremain->Click += gcnew System::EventHandler(this, &BudgetForm::label8_Click);
-			// 
-			// travelbudget
-			// 
-			this->travelbudget->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->travelbudget->Location = System::Drawing::Point(254, 161);
-			this->travelbudget->Name = L"travelbudget";
-			this->travelbudget->Size = System::Drawing::Size(177, 48);
-			this->travelbudget->TabIndex = 1;
-			this->travelbudget->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			this->travelbudget->Click += gcnew System::EventHandler(this, &BudgetForm::label8_Click);
-			// 
-			// clothbudget
-			// 
-			this->clothbudget->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->clothbudget->Location = System::Drawing::Point(254, 213);
-			this->clothbudget->Name = L"clothbudget";
-			this->clothbudget->Size = System::Drawing::Size(177, 48);
-			this->clothbudget->TabIndex = 1;
-			this->clothbudget->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			this->clothbudget->Click += gcnew System::EventHandler(this, &BudgetForm::label8_Click);
-			// 
-			// edubudget
-			// 
-			this->edubudget->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->edubudget->Location = System::Drawing::Point(254, 265);
-			this->edubudget->Name = L"edubudget";
-			this->edubudget->Size = System::Drawing::Size(177, 48);
-			this->edubudget->TabIndex = 1;
-			this->edubudget->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			this->edubudget->Click += gcnew System::EventHandler(this, &BudgetForm::label8_Click);
-			// 
-			// unibudget
-			// 
-			this->unibudget->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->unibudget->Location = System::Drawing::Point(254, 315);
-			this->unibudget->Name = L"unibudget";
-			this->unibudget->Size = System::Drawing::Size(177, 48);
-			this->unibudget->TabIndex = 1;
-			this->unibudget->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			this->unibudget->Click += gcnew System::EventHandler(this, &BudgetForm::label8_Click);
-			// 
-			// travelspent
-			// 
-			this->travelspent->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->travelspent->Location = System::Drawing::Point(438, 161);
-			this->travelspent->Name = L"travelspent";
-			this->travelspent->Size = System::Drawing::Size(183, 48);
-			this->travelspent->TabIndex = 1;
-			this->travelspent->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			this->travelspent->Click += gcnew System::EventHandler(this, &BudgetForm::label8_Click);
-			// 
-			// clothspent
-			// 
-			this->clothspent->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->clothspent->Location = System::Drawing::Point(438, 213);
-			this->clothspent->Name = L"clothspent";
-			this->clothspent->Size = System::Drawing::Size(183, 48);
-			this->clothspent->TabIndex = 1;
-			this->clothspent->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			this->clothspent->Click += gcnew System::EventHandler(this, &BudgetForm::label8_Click);
-			// 
-			// eduspent
-			// 
-			this->eduspent->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->eduspent->Location = System::Drawing::Point(438, 265);
-			this->eduspent->Name = L"eduspent";
-			this->eduspent->Size = System::Drawing::Size(177, 48);
-			this->eduspent->TabIndex = 1;
-			this->eduspent->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			this->eduspent->Click += gcnew System::EventHandler(this, &BudgetForm::label8_Click);
-			// 
-			// unispent
-			// 
-			this->unispent->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->unispent->Location = System::Drawing::Point(438, 315);
-			this->unispent->Name = L"unispent";
-			this->unispent->Size = System::Drawing::Size(177, 48);
-			this->unispent->TabIndex = 1;
-			this->unispent->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			this->unispent->Click += gcnew System::EventHandler(this, &BudgetForm::label8_Click);
-			// 
-			// travelremain
-			// 
-			this->travelremain->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->travelremain->Location = System::Drawing::Point(628, 161);
-			this->travelremain->Name = L"travelremain";
-			this->travelremain->Size = System::Drawing::Size(191, 48);
-			this->travelremain->TabIndex = 1;
-			this->travelremain->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			this->travelremain->Click += gcnew System::EventHandler(this, &BudgetForm::label8_Click);
-			// 
-			// clothremain
-			// 
-			this->clothremain->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->clothremain->Location = System::Drawing::Point(628, 213);
-			this->clothremain->Name = L"clothremain";
-			this->clothremain->Size = System::Drawing::Size(191, 48);
-			this->clothremain->TabIndex = 1;
-			this->clothremain->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			this->clothremain->Click += gcnew System::EventHandler(this, &BudgetForm::label8_Click);
-			// 
-			// eduremain
-			// 
-			this->eduremain->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->eduremain->Location = System::Drawing::Point(628, 265);
-			this->eduremain->Name = L"eduremain";
-			this->eduremain->Size = System::Drawing::Size(191, 48);
-			this->eduremain->TabIndex = 1;
-			this->eduremain->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			this->eduremain->Click += gcnew System::EventHandler(this, &BudgetForm::label8_Click);
-			// 
-			// uniremain
-			// 
-			this->uniremain->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->uniremain->Location = System::Drawing::Point(628, 315);
-			this->uniremain->Name = L"uniremain";
-			this->uniremain->Size = System::Drawing::Size(191, 48);
-			this->uniremain->TabIndex = 1;
-			this->uniremain->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			this->uniremain->Click += gcnew System::EventHandler(this, &BudgetForm::label8_Click);
-			// 
 			// BudgetForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
 			this->ClientSize = System::Drawing::Size(880, 633);
 			this->Controls->Add(this->lbUserInfo);
 			this->Controls->Add(this->label1);
